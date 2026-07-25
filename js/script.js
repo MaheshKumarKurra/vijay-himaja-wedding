@@ -1,25 +1,5 @@
-// Loader
-window.addEventListener("load", () => {
-
-    setTimeout(() => {
-
-        const loader = document.getElementById("loader");
-
-        loader.style.opacity = "0";
-
-        setTimeout(() => {
-
-            loader.style.display = "none";
-
-        }, 1000);
-
-    }, 2200);
-
-});
-
 // Elements
 const navbar = document.querySelector(".navbar");
-const openBtn = document.getElementById("openInvitation");
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
 
@@ -31,29 +11,6 @@ window.addEventListener("scroll", () => {
     } else {
         navbar.classList.remove("scrolled");
     }
-
-});
-
-// Open Invitation
-openBtn.addEventListener("click", (e) => {
-
-    e.preventDefault();
-
-    music.play()
-        .then(() => {
-            musicBtn.innerHTML = "🔊";
-        })
-        .catch(err => console.error(err));
-
-    document.body.style.opacity = "0.96";
-
-    setTimeout(() => {
-
-        document.getElementById("countdown").scrollIntoView({
-            behavior: "smooth"
-        });
-
-    }, 700);
 
 });
 
@@ -469,42 +426,6 @@ function createPetal(){
 
 setInterval(createPetal,600);
 
-const invitationCover = document.getElementById("invitationCover");
-const website = document.getElementById("website");
-const openInvitation = document.getElementById("openInvitation");
-
-const flap = document.querySelector(".flap");
-const letter = document.querySelector(".letter");
-
-openInvitation.addEventListener("click", () => {
-
-    // Open the envelope flap
-    flap.style.transform = "rotateX(180deg)";
-
-    // Slide the letter upward
-    letter.style.transform = "translateY(-170px)";
-
-    // Fade out the invitation cover
-    setTimeout(() => {
-        invitationCover.style.opacity = "0";
-    }, 1200);
-
-    // Show the website
-    setTimeout(() => {
-
-        invitationCover.style.display = "none";
-
-        website.style.display = "block";
-
-        website.style.animation = "fadeIn 1s ease";
-
-        if (typeof audio !== "undefined" && audio) {
-            audio.play().catch(() => {});
-        }
-
-    }, 1800);
-
-});
 
 const sparkleContainer=document.getElementById("sparkles");
 

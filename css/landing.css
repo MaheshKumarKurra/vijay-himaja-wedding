@@ -1,0 +1,95 @@
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow:hidden;
+
+    background:#000;
+
+}
+
+
+/* BOTH CONTAINERS */
+
+#landingContainer,
+#openingContainer{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100vw;
+
+    height:100vh;
+
+    overflow:hidden;
+
+}
+
+
+/* Hide opening initially */
+
+#openingContainer{
+
+    display:none;
+
+}
+
+
+/* VIDEO */
+
+video{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+
+/* Invisible Seal */
+
+#seal{
+
+    position:absolute;
+
+    left:50.3%;
+
+    top:58.6%;
+
+    transform:translate(-50%,-50%);
+
+    width:90px;
+
+    height:90px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:transparent;
+
+    cursor:pointer;
+
+}
+
+
+/* Hover */
+
+#seal:hover{
+
+    box-shadow:0 0 25px rgba(255,215,0,.45);
+
+}
