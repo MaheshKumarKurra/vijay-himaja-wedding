@@ -93,6 +93,28 @@ video{
 
     cursor:pointer;
 
+    outline:none;
+
+    -webkit-tap-highlight-color:transparent;
+
+}#seal:focus{
+
+    outline:none;
+
+}
+
+#seal:focus-visible{
+
+    outline:none;
+
+    box-shadow:none;
+
+}
+
+button{
+
+    -webkit-tap-highlight-color:transparent;
+
 }
 
 

@@ -20,6 +20,7 @@ let heroStarted = false;
 seal.addEventListener("click", () => {
 
     seal.disabled = true;
+    seal.blur();
     seal.classList.add("opened");
     seal.style.pointerEvents = "none";
 
