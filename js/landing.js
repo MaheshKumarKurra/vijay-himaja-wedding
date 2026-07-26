@@ -15,19 +15,15 @@ seal.addEventListener("click", () => {
     openingVideo.currentTime = 0;
 
     openingContainer.style.display = "block";
+    openingContainer.style.opacity = "1";
 
-    // Wait until the browser has enough data to play
-    openingVideo.addEventListener("canplay", function start() {
+    openingVideo.play();
 
-        openingVideo.removeEventListener("canplay", start);
-
-        openingVideo.play();
+    openingVideo.addEventListener("playing", () => {
 
         landingContainer.style.display = "none";
 
-    });
-
-    openingVideo.load();
+    }, { once:true });
 
 });
 
