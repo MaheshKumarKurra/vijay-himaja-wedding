@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/landing.css">
 
     <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/luxury.css">
 
     <link rel="icon" href="assets/icons/favicon.png">
 
@@ -146,73 +147,96 @@
 
     <div class="overlay"></div>
 
+    <div class="hero-decoration">
+
+    <img src="assets/images/floral-top-right.png"
+         class="floral floral-top-right"
+         alt="">
+
+    <img src="assets/images/floral-bottom-left.png"
+         class="floral floral-bottom-left"
+         alt="">
+
+</div>
+
     <div class="hero-container">
 
-        <!-- Left Side -->
+        <h4 class="hero-subtitle">
+            Together with our families
+        </h4>
+
+        <h5 class="hero-tag">
+    WEDDING INVITATION
+</h5>
+
+        <h2 class="couple-name">
+
+            <span class="name name-left">Vijay</span>
+
+            <span class="heart">❤️</span>
+
+            <span class="name name-right">Himaja</span>
+
+        </h2>
+
+        <p class="invite-text">
+
+            Joyfully invite you to celebrate
+            the beginning of our forever.
+
+        </p>
 
         <div class="hero-image">
 
-            <img src="assets/images/couple.png" alt="Wedding Couple" loading="lazy">
+    <img src="assets/images/couple-transparent.png"
+         alt="Vijay & Himaja">
 
-        </div>
-
-        <!-- Right Side -->
-
-        <div class="hero-content">
-
-            <h4>Together with our families</h4>
-
-            <h1>Wedding</h1>
-
-            <h2 class="couple-name">
-
-    <span class="name name-left">Vijay</span>
-
-    <span class="heart">❤️</span>
-
-    <span class="name name-right">Himaja</span>
-
-</h2>
-
-            <p class="invite-text">
-
-                Request the pleasure of your gracious
-                presence to celebrate our wedding.
-
-            </p>
-
-            <div class="date-card">
-
-                <h3>Saturday</h3>
-
-                <h2>5 September 2026</h2>
-
-                <h3>10:46 AM</h3>
-
-            </div>
-
-            <div class="venue">
-
-                📍 Sri Kantepudi Subbamma
-                Kamma Sanga Community Hall
-
-            </div>
-
-            <a href="#countdown" id="heroButton" class="btn">
-✨ Explore Our Invitation
-</a>
-
-        </div>
-        
-
-    </div>
-    <div class="scroll-indicator">
-
-    <span>Scroll to Explore</span>
-
-    <div class="arrow">⌄</div>
+    <div class="hero-glow"></div>
 
 </div>
+
+        <div class="scratch-card">
+
+    <div class="scratch-content">
+
+        <h3>💍 Our Wedding 💍</h3>
+
+        <p class="date">
+            05 September 2026
+        </p>
+
+        <p>
+            Saturday • 10:46 AM
+        </p>
+
+    </div>
+
+    <!-- Hint -->
+    <div class="scratch-hint">
+
+        ✨ Scratch the Golden Foil ✨<br>
+        <span>Reveal Our Wedding Date</span>
+
+    </div>
+
+    <canvas
+        id="scratchCanvas"
+        width="320"
+        height="180">
+    </canvas>
+
+</div>
+
+        <a
+    id="heroButton"
+    class="luxury-btn"
+    href="#countdown">
+
+    Explore Our Invitation
+
+</a>
+
+    </div>
 
 </header>
 
@@ -228,22 +252,22 @@
 
         <div class="countdown-boxes">
 
-            <div class="time-box">
+            <div class="time-box luxury-card">
                 <span id="days">00</span>
                 <p>Days</p>
             </div>
 
-            <div class="time-box">
+            <div class="time-box luxury-card">
                 <span id="hours">00</span>
                 <p>Hours</p>
             </div>
 
-            <div class="time-box">
+            <div class="time-box luxury-card">
                 <span id="minutes">00</span>
                 <p>Minutes</p>
             </div>
 
-            <div class="time-box">
+            <div class="time-box luxury-card">
                 <span id="seconds">00</span>
                 <p>Seconds</p>
             </div>
@@ -382,7 +406,7 @@
 
     <div class="venue-container">
 
-        <div class="venue-card">
+        <div class="venue-card luxury-card">
 
             <div class="venue-icon">📍</div>
 
@@ -464,7 +488,7 @@
 
     <div class="rsvp-container">
 
-        <form class="rsvp-form">
+        <form class="rsvp-form luxury-card">
 
             <input type="text"
                    placeholder="Your Name"

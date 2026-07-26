@@ -166,7 +166,15 @@ function openLightbox(index){
 
     lightbox.classList.add("active");
 
-    lightboxImage.src=images[index].src;
+    lightboxImage.style.opacity=0;
+
+setTimeout(()=>{
+
+lightboxImage.src=images[index].src;
+
+lightboxImage.style.opacity=1;
+
+},150);
 
     lightboxImage.alt=images[index].alt;
 
@@ -447,7 +455,7 @@ function createPetal(){
 
 }
 
-setInterval(createPetal,600);
+//setInterval(createPetal,600);
 
 
 const sparkleContainer=document.getElementById("sparkles");
@@ -476,4 +484,161 @@ function createSparkle(){
 
 }
 
+//setInterval(createSparkle,500);
+
+const heroButton = document.getElementById("heroButton");
+
+let petalsStarted = false;
+
+heroButton.addEventListener("click", () => {
+
+    if (petalsStarted) return;
+
+    petalsStarted = true;
+
+    const petalInterval=
+
+setInterval(createPetal,600);
+
+const sparkleInterval=
+
 setInterval(createSparkle,500);
+
+});
+
+const canvas = document.getElementById("scratchCanvas");
+
+const ctx = canvas.getContext("2d", {
+    willReadFrequently: true
+});
+
+ctx.fillStyle="#D4AF37";
+
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.globalCompositeOperation="destination-out";
+
+let scratching=false;
+
+let revealed = false;
+
+canvas.addEventListener("mousedown",()=>{
+
+    scratching=true;
+
+});
+
+canvas.addEventListener("mouseup",()=>{
+
+    scratching=false;
+
+});
+
+canvas.addEventListener("mousemove",(e)=>{
+
+    if(!scratching) return;
+
+    const rect=canvas.getBoundingClientRect();
+
+    ctx.beginPath();
+
+    ctx.arc(
+
+        e.clientX-rect.left,
+
+        e.clientY-rect.top,
+
+        22,
+
+        0,
+
+        Math.PI*2);
+
+    ctx.fill();
+
+checkScratchProgress();
+
+});
+
+canvas.addEventListener("touchmove",(e)=>{
+
+    e.preventDefault();
+
+    const rect=canvas.getBoundingClientRect();
+
+    const touch=e.touches[0];
+
+    ctx.beginPath();
+
+    ctx.arc(
+
+        touch.clientX-rect.left,
+
+        touch.clientY-rect.top,
+
+        22,
+
+        0,
+
+        Math.PI*2);
+
+    ctx.fill();
+
+checkScratchProgress();
+
+});
+
+function revealScratchCard(){
+
+    const hint = document.querySelector(".scratch-hint");
+
+    hint.style.opacity = "0";
+
+    canvas.style.transition = "opacity .8s ease";
+
+    canvas.style.opacity = "0";
+
+    setTimeout(()=>{
+
+        hint.style.display = "none";
+
+        canvas.style.display = "none";
+
+    },800);
+
+}
+
+function checkScratchProgress(){
+
+    if(revealed) return;
+
+    const imageData = ctx.getImageData(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    let transparent = 0;
+
+    for(let i=3;i<imageData.data.length;i+=4){
+
+        if(imageData.data[i]===0){
+
+            transparent++;
+
+        }
+
+    }
+
+    const percent = transparent/(canvas.width*canvas.height);
+
+    if(percent >= 0.55){
+
+        revealed=true;
+
+        revealScratchCard();
+
+    }
+
+}
