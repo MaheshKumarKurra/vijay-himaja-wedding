@@ -1,8 +1,14 @@
 const landingContainer = document.getElementById("landingContainer");
-const landingVideo = document.getElementById("landingVideo");
+/*const landingVideo = document.getElementById("landingVideo");
 
 const openingContainer = document.getElementById("openingContainer");
-const openingVideo = document.getElementById("openingVideo");
+const openingVideo = document.getElementById("openingVideo");*/
+
+const introVideo = document.getElementById("introVideo");
+
+const LOOP_END = 4.5;
+
+let introUnlocked = false;
 
 const website = document.getElementById("website");
 
@@ -14,39 +20,31 @@ let heroStarted = false;
 seal.addEventListener("click", () => {
 
     seal.disabled = true;
+    seal.classList.add("opened");
+    seal.style.pointerEvents = "none";
 
-    landingVideo.pause();
+    seal.style.animation = "none";
 
-landingMusic.pause();
+    introUnlocked = true;
 
+    landingMusic.pause();
 landingMusic.currentTime = 0;
 
+openingMusic.volume = 1;
 openingMusic.currentTime = 0;
 
-openingMusic.volume = 1;
+introVideo.currentTime = LOOP_END;
 
-openingMusic.play();
+introVideo.play();
 
-    openingVideo.currentTime = 0;
-
-    openingContainer.style.display = "block";
-
-    openingVideo.play().then(() => {
-
-        requestAnimationFrame(() => {
-
-            landingContainer.style.display = "none";
-
-        });
-
-    });
+openingMusic.play().catch(console.error);
 
 });
 
 // Hero Reveal
-openingVideo.addEventListener("timeupdate", () => {
+introVideo.addEventListener("timeupdate", () => {
 
-    if (!heroStarted && openingVideo.currentTime >= 4.2) {
+    if (!heroStarted && introVideo.currentTime >= 8.8) {
 
         openingMusic.pause();
 
@@ -64,18 +62,31 @@ weddingMusic.play();
 
         hero.classList.add("reveal");
 
-        openingContainer.style.transition = "opacity .8s ease";
-        openingContainer.style.opacity = "0";
+        landingContainer.style.transition = "opacity .8s ease";
+        landingContainer.style.opacity = "0";
 
     }
 
 });
 
 // Finish
-openingVideo.addEventListener("ended", () => {
+introVideo.addEventListener("ended", () => {
 
-    openingContainer.remove();
+    landingContainer.remove();
 
     document.body.style.overflow = "auto";
+
+});
+
+introVideo.addEventListener("timeupdate",()=>{
+
+    if(!introUnlocked &&
+       introVideo.currentTime>=LOOP_END){
+
+        introVideo.currentTime=0;
+
+        introVideo.play();
+
+    }
 
 });
