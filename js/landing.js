@@ -1,18 +1,14 @@
 const landingContainer = document.getElementById("landingContainer");
-
 const landingVideo = document.getElementById("landingVideo");
 
 const openingContainer = document.getElementById("openingContainer");
-
 const openingVideo = document.getElementById("openingVideo");
 
 const seal = document.getElementById("seal");
 
-
-
-/* Click Seal */
-
 seal.addEventListener("click", () => {
+
+    seal.disabled = true;
 
     landingVideo.pause();
 
@@ -20,28 +16,23 @@ seal.addEventListener("click", () => {
 
     openingContainer.style.display = "block";
 
-    openingVideo.play().then(() => {
+    // Wait until the browser has enough data to play
+    openingVideo.addEventListener("canplay", function start() {
 
-        requestAnimationFrame(() => {
+        openingVideo.removeEventListener("canplay", start);
 
-            landingContainer.style.display = "none";
+        openingVideo.play();
 
-        });
+        landingContainer.style.display = "none";
 
     });
 
+    openingVideo.load();
+
 });
-
-
-
-/* Opening Finished */
 
 openingVideo.addEventListener("ended", () => {
 
-    /*
-       Replace with your website page
-    */
-
-    window.location.href = "main.html";
+    window.location.replace("main.html");
 
 });

@@ -41,8 +41,22 @@ body{
 
 #openingContainer{
 
-    display:none;
+    display: none;
 
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:opacity .15s linear;
+
+    background:#000;
+
+}
+
+#openingVideo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
 
@@ -91,17 +105,5 @@ video{
 #seal:hover{
 
     box-shadow:0 0 25px rgba(255,215,0,.45);
-
-}
-
-#openingContainer{
-
-    display:block;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transition:opacity .15s linear;
 
 }
