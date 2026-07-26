@@ -32,7 +32,7 @@ window.addEventListener("scroll", () => {
 });
 
 // Music Toggle
-musicBtn.addEventListener("click", () => {
+/*musicBtn.addEventListener("click", () => {
 
     if (weddingMusic.paused) {
 
@@ -48,7 +48,7 @@ musicBtn.addEventListener("click", () => {
 
 }
 
-});
+});*/
 
 // Countdown
 
@@ -363,7 +363,7 @@ const navMenu = document.querySelector(".nav-links");
 
 const menuOverlay = document.getElementById("menuOverlay");
 
-menuToggle.addEventListener("click",()=>{
+/*menuToggle.addEventListener("click",()=>{
 
     navMenu.classList.toggle("show");
 
@@ -401,7 +401,7 @@ menuOverlay.addEventListener("click",()=>{
 
     menuToggle.classList.remove("active");
 
-});
+});*/
 
 document.addEventListener("keydown",(e)=>{
 
