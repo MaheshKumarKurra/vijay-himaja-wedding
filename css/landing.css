@@ -93,3 +93,15 @@ video{
     box-shadow:0 0 25px rgba(255,215,0,.45);
 
 }
+
+#openingContainer{
+
+    display:block;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:opacity .15s linear;
+
+}

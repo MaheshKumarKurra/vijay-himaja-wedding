@@ -3,6 +3,18 @@ const navbar = document.querySelector(".navbar");
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
 
+window.addEventListener("load", () => {
+
+    music.play()
+        .then(() => {
+            musicBtn.innerHTML = "🔊";
+        })
+        .catch(() => {
+            console.log("Autoplay blocked.");
+        });
+
+});
+
 // Sticky Navbar
 window.addEventListener("scroll", () => {
 

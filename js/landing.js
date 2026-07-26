@@ -14,23 +14,21 @@ const seal = document.getElementById("seal");
 
 seal.addEventListener("click", () => {
 
-    /* Stop landing */
-
     landingVideo.pause();
-
-    /* Hide landing */
-
-    landingContainer.style.display = "none";
-
-    /* Show opening */
-
-    openingContainer.style.display = "block";
-
-    /* Start from beginning */
 
     openingVideo.currentTime = 0;
 
-    openingVideo.play();
+    openingContainer.style.display = "block";
+
+    openingVideo.play().then(() => {
+
+        requestAnimationFrame(() => {
+
+            landingContainer.style.display = "none";
+
+        });
+
+    });
 
 });
 
