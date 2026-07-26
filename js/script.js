@@ -1,16 +1,21 @@
 // Elements
 const navbar = document.querySelector(".navbar");
-const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
 
 window.addEventListener("load", () => {
 
-    music.play()
+    landingMusic.volume = 0.35;
+
+    landingMusic.play()
         .then(() => {
-            musicBtn.innerHTML = "🔊";
+
+            console.log("Landing music started");
+
         })
-        .catch(() => {
-            console.log("Autoplay blocked.");
+        .catch((err) => {
+
+            console.log("Autoplay blocked:", err);
+
         });
 
 });
@@ -29,13 +34,19 @@ window.addEventListener("scroll", () => {
 // Music Toggle
 musicBtn.addEventListener("click", () => {
 
-    if (music.paused) {
-        music.play();
-        musicBtn.innerHTML = "🔊";
-    } else {
-        music.pause();
-        musicBtn.innerHTML = "🎵";
-    }
+    if (weddingMusic.paused) {
+
+    weddingMusic.play();
+
+    musicBtn.innerHTML = "🔊";
+
+} else {
+
+    weddingMusic.pause();
+
+    musicBtn.innerHTML = "🎵";
+
+}
 
 });
 
