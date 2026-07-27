@@ -486,158 +486,206 @@ function createSparkle(){
 
 //setInterval(createSparkle,500);
 
-const heroButton = document.getElementById("heroButton");
 
-let petalsStarted = false;
+/* ==========================================
+        PREMIUM SCRATCH CARD
+========================================== */
 
-heroButton.addEventListener("click", () => {
+const scratchCanvas = document.getElementById("scratchCanvas");
 
-    if (petalsStarted) return;
+if (scratchCanvas) {
 
-    petalsStarted = true;
+    const ctx = scratchCanvas.getContext("2d", {
+        willReadFrequently: true
+    });
 
-    const petalInterval=
+    const foil = new Image();
 
-setInterval(createPetal,600);
+    foil.src = "assets/images/gold-foil.png";
 
-const sparkleInterval=
+    let scratching = false;
 
-setInterval(createSparkle,500);
+    let revealed = false;
 
-});
+    function resizeCanvas() {
 
-const canvas = document.getElementById("scratchCanvas");
+        scratchCanvas.width = scratchCanvas.offsetWidth;
 
-const ctx = canvas.getContext("2d", {
-    willReadFrequently: true
-});
+        scratchCanvas.height = scratchCanvas.offsetHeight;
 
-ctx.fillStyle="#D4AF37";
-
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-ctx.globalCompositeOperation="destination-out";
-
-let scratching=false;
-
-let revealed = false;
-
-canvas.addEventListener("mousedown",()=>{
-
-    scratching=true;
-
-});
-
-canvas.addEventListener("mouseup",()=>{
-
-    scratching=false;
-
-});
-
-canvas.addEventListener("mousemove",(e)=>{
-
-    if(!scratching) return;
-
-    const rect=canvas.getBoundingClientRect();
-
-    ctx.beginPath();
-
-    ctx.arc(
-
-        e.clientX-rect.left,
-
-        e.clientY-rect.top,
-
-        22,
-
-        0,
-
-        Math.PI*2);
-
-    ctx.fill();
-
-checkScratchProgress();
-
-});
-
-canvas.addEventListener("touchmove",(e)=>{
-
-    e.preventDefault();
-
-    const rect=canvas.getBoundingClientRect();
-
-    const touch=e.touches[0];
-
-    ctx.beginPath();
-
-    ctx.arc(
-
-        touch.clientX-rect.left,
-
-        touch.clientY-rect.top,
-
-        22,
-
-        0,
-
-        Math.PI*2);
-
-    ctx.fill();
-
-checkScratchProgress();
-
-});
-
-function revealScratchCard(){
-
-    const hint = document.querySelector(".scratch-hint");
-
-    hint.style.opacity = "0";
-
-    canvas.style.transition = "opacity .8s ease";
-
-    canvas.style.opacity = "0";
-
-    setTimeout(()=>{
-
-        hint.style.display = "none";
-
-        canvas.style.display = "none";
-
-    },800);
-
-}
-
-function checkScratchProgress(){
-
-    if(revealed) return;
-
-    const imageData = ctx.getImageData(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-    let transparent = 0;
-
-    for(let i=3;i<imageData.data.length;i+=4){
-
-        if(imageData.data[i]===0){
-
-            transparent++;
-
-        }
+        drawFoil();
 
     }
 
-    const percent = transparent/(canvas.width*canvas.height);
+    function drawFoil() {
 
-    if(percent >= 0.55){
+        if (!foil.complete) return;
 
-        revealed=true;
+        ctx.globalCompositeOperation = "source-over";
 
-        revealScratchCard();
+        ctx.clearRect(
+            0,
+            0,
+            scratchCanvas.width,
+            scratchCanvas.height
+        );
+
+        ctx.drawImage(
+            foil,
+            0,
+            0,
+            scratchCanvas.width,
+            scratchCanvas.height
+        );
+
+        ctx.globalCompositeOperation = "destination-out";
+
+    }
+
+    foil.onload = drawFoil;
+
+    resizeCanvas();
+
+    window.addEventListener("resize", resizeCanvas);
+
+    function scratch(x, y) {
+
+        ctx.beginPath();
+
+        ctx.arc(
+            x,
+            y,
+            28,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+
+        checkProgress();
+
+    }
+
+    function getPoint(e) {
+
+        const rect = scratchCanvas.getBoundingClientRect();
+
+        if (e.touches) {
+
+            return {
+
+                x: e.touches[0].clientX - rect.left,
+
+                y: e.touches[0].clientY - rect.top
+
+            };
+
+        }
+
+        return {
+
+            x: e.clientX - rect.left,
+
+            y: e.clientY - rect.top
+
+        };
+
+    }
+
+    scratchCanvas.addEventListener("mousedown", () => {
+
+        scratching = true;
+
+    });
+
+    scratchCanvas.addEventListener("mouseup", () => {
+
+        scratching = false;
+
+    });
+
+    scratchCanvas.addEventListener("mouseleave", () => {
+
+        scratching = false;
+
+    });
+
+    scratchCanvas.addEventListener("mousemove", (e) => {
+
+        if (!scratching) return;
+
+        const p = getPoint(e);
+
+        scratch(p.x, p.y);
+
+    });
+
+    scratchCanvas.addEventListener("touchstart", () => {
+
+        scratching = true;
+
+    });
+
+    scratchCanvas.addEventListener("touchend", () => {
+
+        scratching = false;
+
+    });
+
+    scratchCanvas.addEventListener("touchmove", (e) => {
+
+        e.preventDefault();
+
+        if (!scratching) return;
+
+        const p = getPoint(e);
+
+        scratch(p.x, p.y);
+
+    });
+
+    function checkProgress() {
+
+        if (revealed) return;
+
+        const pixels = ctx.getImageData(
+            0,
+            0,
+            scratchCanvas.width,
+            scratchCanvas.height
+        ).data;
+
+        let transparent = 0;
+
+        for (let i = 3; i < pixels.length; i += 4) {
+
+            if (pixels[i] === 0) {
+
+                transparent++;
+
+            }
+
+        }
+
+        const percent =
+            transparent /
+            (scratchCanvas.width * scratchCanvas.height);
+
+        if (percent > 0.55) {
+
+            revealed = true;
+
+            scratchCanvas.style.transition = ".8s";
+
+            scratchCanvas.style.opacity = "0";
+
+            setTimeout(() => {
+
+                scratchCanvas.remove();
+
+            }, 800);
+
+        }
 
     }
 
