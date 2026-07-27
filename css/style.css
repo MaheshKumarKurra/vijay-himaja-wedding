@@ -62,7 +62,7 @@ letter-spacing:.3px;
 
     flex-direction:column;
 
-    padding-top:10px;
+    padding-top:7px;
 
     align-items: center;
 
@@ -123,7 +123,7 @@ letter-spacing:.3px;
 
     .hero-teaser{
 
-        gap:8px;
+        gap:auto;
 
     }
 
@@ -132,6 +132,14 @@ letter-spacing:.3px;
 .hero-card{
 
     flex-shrink:0;
+
+    width:min(100vw, 430px);
+
+    max-height:68svh;
+
+    display:flex;
+
+    justify-content:center;
 
     animation:heroFloat 5s ease-in-out infinite;
 
@@ -144,6 +152,10 @@ letter-spacing:.3px;
     width:100%;
 
     height:auto;
+
+    max-height:68svh;
+
+    object-fit:contain;
 
 }
 
