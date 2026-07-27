@@ -56,27 +56,34 @@ letter-spacing:.3px;
 
 .hero{
 
-    min-height:100vh;
+    min-height:100svh;
 
     display:flex;
 
     flex-direction:column;
 
-    align-items:center;
+    padding-top:10px;
 
-    justify-content:space-between;
-
-    padding-top:15px;
-
-    padding-bottom:30px;
+    align-items: center;
 
 }
 
 .hero-teaser{
 
+    flex: 1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction: column;
+
     text-align:center;
 
-    margin-bottom:50px;
 
 }
 
@@ -84,7 +91,7 @@ letter-spacing:.3px;
 
     font-size:28px;
 
-    margin-bottom:8px;
+
 
     animation:floatIcon 2.5s ease-in-out infinite;
 
@@ -94,11 +101,11 @@ letter-spacing:.3px;
 
     font-family:"Cormorant Garamond", serif;
 
-    font-size:28px;
+    font-size:20px;
 
     color:#7A5B3A;
 
-    margin-bottom:40px;
+
 
 }
 
@@ -112,11 +119,19 @@ letter-spacing:.3px;
 
 }
 
+@media (max-width:768px){
+
+    .hero-teaser{
+
+        gap:8px;
+
+    }
+
+}
+
 .hero-card{
 
-    width:100vw;
-
-    max-width:430px;
+    flex-shrink:0;
 
     animation:heroFloat 5s ease-in-out infinite;
 
