@@ -92,17 +92,6 @@ letter-spacing:.3px;
 
 }
 
-.date-section{
-
-    padding:35px 0 60px;
-
-    display:flex;
-
-    justify-content:center;
-
-    background:#f8f3eb;
-
-}
 
 .date-wrapper{
 
@@ -111,6 +100,8 @@ letter-spacing:.3px;
     width:100vw;
 
     max-width:430px;
+
+    margin-top:12px;
 
 }
 
