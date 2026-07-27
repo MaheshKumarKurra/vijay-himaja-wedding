@@ -14,7 +14,8 @@ body{
 
     overflow:hidden;
 
-    background:#000;
+    min-height:100%;
+    background:#f8f3ea;
 
 }
 
@@ -137,6 +138,8 @@ button{
 /* Website hidden initially */
 
 #website{
+
+    min-height:100dvh;
     position:fixed;
     inset:0;
 
@@ -146,7 +149,7 @@ button{
     opacity:0;
     visibility:hidden;
 
-    z-index:3;
+    z-index:1;
 
     background:
         transparent;
