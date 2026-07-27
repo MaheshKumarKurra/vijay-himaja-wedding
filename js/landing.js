@@ -37,7 +37,7 @@ seal.addEventListener("click", () => {
 
     if (t <= 1) {
 
-        introVideo.playbackRate = 3;
+        introVideo.playbackRate = 2.5;
 
     } else if (t <= 2) {
 
@@ -117,7 +117,7 @@ introVideo.addEventListener("timeupdate", () => {
     if (introUnlocked) {
 
         if (
-            introVideo.playbackRate === 3 &&
+            introVideo.playbackRate === 2.5 &&
             introVideo.currentTime >= 2.8
         ) {
 
