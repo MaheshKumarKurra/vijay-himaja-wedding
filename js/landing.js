@@ -37,15 +37,15 @@ seal.addEventListener("click", () => {
 
     if (t <= 1) {
 
-        introVideo.playbackRate = 2.5;
+        introVideo.playbackRate = 2;
 
     } else if (t <= 2) {
 
-        introVideo.playbackRate = 2;
+        introVideo.playbackRate = 1.6;
 
     } else if (t <= 3.5) {
 
-        introVideo.playbackRate = 1.5;
+        introVideo.playbackRate = 1.3;
 
     } else {
 
@@ -117,20 +117,20 @@ introVideo.addEventListener("timeupdate", () => {
     if (introUnlocked) {
 
         if (
-            introVideo.playbackRate === 2.5 &&
+            introVideo.playbackRate === 2 &&
             introVideo.currentTime >= 2.8
         ) {
 
-            introVideo.playbackRate = 2;
+            introVideo.playbackRate = 1.6;
 
         }
 
         if (
-            introVideo.playbackRate === 2 &&
+            introVideo.playbackRate === 1.6 &&
             introVideo.currentTime >= 3.8
         ) {
 
-            introVideo.playbackRate = 1.5;
+            introVideo.playbackRate = 1.3;
 
         }
 
