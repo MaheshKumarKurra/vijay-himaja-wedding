@@ -48,8 +48,12 @@ body{
 
     overflow-x:hidden;
 
-    
+    background:url("../assets/images/luxury-background.webp")
+               center top/100% auto repeat-y;
 
+    background-size:100% auto;
+
+    background-repeat:repeat-y;
 }
 
 @media (max-width:768px){
