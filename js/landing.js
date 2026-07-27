@@ -23,28 +23,47 @@ seal.addEventListener("click", () => {
     seal.blur();
     seal.classList.add("opened");
     seal.style.pointerEvents = "none";
-
     seal.style.animation = "none";
 
     introUnlocked = true;
 
     landingMusic.pause();
-landingMusic.currentTime = 0;
+    landingMusic.currentTime = 0;
 
-openingMusic.volume = 1;
-openingMusic.currentTime = 0;
+    openingMusic.volume = 1;
+    openingMusic.currentTime = 0;
 
-introVideo.currentTime = LOOP_END;
+    const t = introVideo.currentTime;
 
-introVideo.play();
+    if (t <= 1) {
 
-openingMusic.play().catch(console.error);
+        introVideo.playbackRate = 3;
+
+    } else if (t <= 2) {
+
+        introVideo.playbackRate = 2;
+
+    } else if (t <= 3.5) {
+
+        introVideo.playbackRate = 1.5;
+
+    } else {
+
+        introVideo.playbackRate = 1;
+
+    }
+
+    introVideo.play();
+
+    openingMusic.play().catch(console.error);
 
 });
 
 // Hero Reveal
 introVideo.addEventListener("timeupdate", () => {
 
+    
+    
     if (!heroStarted && introVideo.currentTime >= 8.8) {
 
         openingMusic.pause();
@@ -81,14 +100,48 @@ document.documentElement.style.overflow = "auto";
 
 });
 
-introVideo.addEventListener("timeupdate",()=>{
+introVideo.addEventListener("timeupdate", () => {
 
-    if(!introUnlocked &&
-       introVideo.currentTime>=LOOP_END){
+    // Keep looping before seal click
+    if (!introUnlocked &&
+        introVideo.currentTime >= LOOP_END) {
 
-        introVideo.currentTime=0;
-
+        introVideo.currentTime = 0;
         introVideo.play();
+
+        return;
+    }
+
+    // Smoothly slow down as it approaches the opening
+
+    if (introUnlocked) {
+
+        if (
+            introVideo.playbackRate === 3 &&
+            introVideo.currentTime >= 2.8
+        ) {
+
+            introVideo.playbackRate = 2;
+
+        }
+
+        if (
+            introVideo.playbackRate === 2 &&
+            introVideo.currentTime >= 3.8
+        ) {
+
+            introVideo.playbackRate = 1.5;
+
+        }
+
+        if (
+            introVideo.playbackRate > 1 &&
+            introVideo.currentTime >= LOOP_END
+        ) {
+
+            introVideo.playbackRate = 1;
+
+        }
 
     }
 
