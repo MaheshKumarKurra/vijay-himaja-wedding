@@ -102,7 +102,9 @@ body::after{
 
 .hero{
 
-    min-height:100svh;
+    min-height:100vh;
+
+    padding-left:0px;
 
     display:flex;
 
@@ -213,7 +215,8 @@ body::after{
 
     flex-shrink:0;
 
-    width:min(100vw, 430px);
+    width:100vw;
+    max-width:430px;
 
     max-height:62svh;
 
@@ -235,7 +238,7 @@ body::after{
 
     max-height:62svh;
 
-    object-fit:contain;
+    
 
 }
 
