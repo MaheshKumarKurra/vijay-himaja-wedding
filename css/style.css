@@ -58,9 +58,9 @@ body{
 
     background-position:center top;
 
-    background-repeat:repeat;
+    background-repeat:no-repeat;
 
-    background-attachment:scroll;
+    background-attachment:fixed;
 
 }
 
@@ -3488,4 +3488,30 @@ box-shadow:
 
     border:1px solid rgba(255,255,255,.25);
 
+}
+
+.site-bg{
+    position:fixed;
+    inset:0;
+
+    background:url("../assets/images/luxury-background.webp") center center / cover no-repeat;
+
+    z-index:-1;
+
+    pointer-events:none;
+}
+
+#website{
+    background:transparent;
+}
+
+#countdown,
+#couple,
+#story,
+#gallery,
+#venue,
+#schedule,
+#rsvp,
+#footer{
+    background:transparent;
 }
