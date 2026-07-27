@@ -149,8 +149,7 @@ button{
     z-index:3;
 
     background:
-        url("../assets/images/luxury-background.webp")
-        center top;
+        transparent;
 
     background-size:100% auto;
     background-repeat:repeat-y;

@@ -3473,16 +3473,24 @@ box-shadow:
 
 }
 
-/*.site-bg{
+.site-bg{
+
     position:fixed;
+
     inset:0;
 
-    background:url("../assets/images/luxury-background.webp") center center / cover no-repeat;
+    background:url("../assets/images/luxury-background.webp")
+               center top;
+
+    background-size:cover;
+
+    background-repeat:no-repeat;
 
     z-index:-1;
 
     pointer-events:none;
-}*/
+
+}
 
 #website{
     background:transparent;
