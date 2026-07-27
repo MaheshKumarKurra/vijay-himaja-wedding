@@ -218,7 +218,7 @@ body::after{
     width:100vw;
     max-width:430px;
 
-    max-height:62svh;
+    max-height:100svh;
 
     display:flex;
 
@@ -236,9 +236,9 @@ body::after{
 
     height:auto;
 
-    max-height:62svh;
+    max-height:100svh;
 
-    
+
 
 }
 
