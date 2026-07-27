@@ -491,7 +491,19 @@ function createSparkle(){
         PREMIUM SCRATCH CARD
 ========================================== */
 
-const scratchCanvas = document.getElementById("scratchCanvas");
+let revealed = false;
+
+const scratchCanvas =
+document.getElementById("overlayScratchCanvas");
+
+const wrapper =
+document.querySelector(".scratch-wrapper");
+
+const overlay = document.getElementById("dateOverlay");
+
+scratchCanvas.width = wrapper.offsetWidth;
+
+scratchCanvas.height = wrapper.offsetHeight;
 
 if (scratchCanvas) {
 
@@ -505,7 +517,6 @@ if (scratchCanvas) {
 
     let scratching = false;
 
-    let revealed = false;
 
     function resizeCanvas() {
 
@@ -542,9 +553,11 @@ if (scratchCanvas) {
 
     }
 
-    foil.onload = drawFoil;
+    foil.onload = () => {
 
     resizeCanvas();
+
+};
 
     window.addEventListener("resize", resizeCanvas);
 
@@ -667,26 +680,93 @@ if (scratchCanvas) {
 
         }
 
-        const percent =
-            transparent /
-            (scratchCanvas.width * scratchCanvas.height);
+        const totalPixels =
+    scratchCanvas.width *
+    scratchCanvas.height;
 
-        if (percent > 0.55) {
+const percent =
+    (transparent / totalPixels) * 100;
 
-            revealed = true;
+        if (percent>=25) {
 
-            scratchCanvas.style.transition = ".8s";
+    revealed = true;
 
-            scratchCanvas.style.opacity = "0";
+    scratchCanvas.style.transition = ".8s ease";
+
+    scratchCanvas.style.opacity = "0";
+
+    setTimeout(() => {
+
+        scratchCanvas.remove();
+
+        document.getElementById("continueHint")
+            .classList.add("show");
 
             setTimeout(() => {
 
-                scratchCanvas.remove();
+            closeReveal();
 
-            }, 800);
+        }, 3000)
 
-        }
+    },800);
+
+}
+function closeReveal() {
+
+    overlay.classList.remove("show");
+
+    website.style.overflowY = "auto";
+
+    heroTeaser.innerHTML = `
+        <div class="hero-date-wrapper">
+            <img
+                src="assets/images/wedding-date.png"
+                class="hero-date-card"
+                alt="Wedding Date">
+        </div>
+    `;
+
+}
 
     }
 
 }
+
+const continueHint =
+document.getElementById("continueHint");
+
+overlay.addEventListener("click", () => {
+
+    if(!revealed) return;
+
+    closeReveal();
+
+});
+
+const websiteContainer = document.getElementById("website");
+const hero = document.querySelector(".hero");
+
+let modalOpened = false;
+
+websiteContainer.addEventListener("scroll", () => {
+
+    const triggerPoint = 180;
+
+    
+
+    if (
+        websiteContainer.scrollTop >= triggerPoint &&
+        !modalOpened
+    ) {
+
+        console.log("OPENING MODAL");
+
+        modalOpened = true;
+
+        websiteContainer.style.overflowY = "hidden";
+
+        overlay.classList.add("show");
+
+    }
+
+});

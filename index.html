@@ -170,21 +170,69 @@
 
     </div>
 
-    <!-- Wedding Date Section -->
-    <div class="date-wrapper">
+    <div class="hero-teaser" id="heroTeaser">
 
-        <!-- Actual Wedding Date -->
-        <img
-            src="assets/images/wedding-date.png"
-            alt="Wedding Date"
-            class="date-image">
+    <div class="hero-teaser-icon">✨</div>
 
-        <!-- Scratch Foil -->
-        <canvas id="scratchCanvas"></canvas>
+    <p class="hero-teaser-text">
+
+        A Special Moment Awaits...
+
+    </p>
+
+    <div class="hero-scroll">
+
+        ↓ Scroll to Reveal ↓
 
     </div>
 
+</div>
+
+    <!-- Wedding Date Section -->
+    <!--<div class="date-wrapper">-->
+
+        <!-- Actual Wedding Date -->
+        <!--<img
+            src="assets/images/wedding-date.png"
+            alt="Wedding Date"
+            class="date-image">-->
+
+        <!-- Scratch Foil -->
+        <!--<canvas id="scratchCanvas"></canvas>
+
+    </div> -->
+
 </header>
+
+<div id="dateRevealTrigger"></div>
+
+<!-- ==========================================
+        WEDDING DATE TEASER
+========================================== -->
+
+<!--<section id="dateTeaser" class="date-teaser">
+
+    <div class="teaser-content">
+
+        <div class="teaser-icon">✨</div>
+
+        <h2>One More Surprise Awaits...</h2>
+
+        <p>
+
+            Scratch to reveal our wedding date
+
+        </p>
+
+        <div class="scroll-indicator">
+
+            ↓
+
+        </div>
+
+    </div>
+
+</section>-->
 
 <section id="countdown">
 
@@ -560,9 +608,42 @@
 
 </button>
 
-<script src="js/script.js"></script>
+
+
+
+
 
 </main>
+
+<!-- ==========================================
+        Wedding Date Reveal Overlay
+========================================== -->
+
+<div id="dateOverlay" class="date-overlay">
+
+    <div class="date-modal">
+
+        <div class="scratch-wrapper">
+
+    <img
+        src="assets/images/wedding-date.png"
+        class="overlay-date-image">
+
+    <canvas id="overlayScratchCanvas"></canvas>
+
+</div>
+
+        <div id="continueHint" class="continue-hint">
+
+            Tap anywhere to continue
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="js/script.js"></script>
 
 <audio id="landingMusic" loop preload="auto">
     <source src="assets/music/landing.mp3" type="audio/mpeg">
@@ -578,6 +659,9 @@
 
 <script src="js/audio.js"></script>
 <script src="js/landing.js"></script>
+
+
+
 
 </body>
 

@@ -75,7 +75,9 @@ introVideo.addEventListener("ended", () => {
 
     landingContainer.remove();
 
-    document.body.style.overflow = "auto";
+document.body.style.overflow = "auto";
+
+document.documentElement.style.overflow = "auto";
 
 });
 

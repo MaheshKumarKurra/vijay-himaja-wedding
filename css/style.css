@@ -62,13 +62,53 @@ letter-spacing:.3px;
 
     flex-direction:column;
 
-    justify-content:center;
-
     align-items:center;
 
-    padding-top:10px;
+    justify-content:space-between;
 
-    background:#f8f3eb;
+    padding-top:15px;
+
+    padding-bottom:30px;
+
+}
+
+.hero-teaser{
+
+    text-align:center;
+
+    margin-bottom:50px;
+
+}
+
+.hero-teaser-icon{
+
+    font-size:28px;
+
+    margin-bottom:8px;
+
+    animation:floatIcon 2.5s ease-in-out infinite;
+
+}
+
+.hero-teaser-text{
+
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:28px;
+
+    color:#7A5B3A;
+
+    margin-bottom:40px;
+
+}
+
+.hero-scroll{
+
+    color:#C89A72;
+
+    font-size:16px;
+
+    animation:bounceArrow 1.8s infinite;
 
 }
 
@@ -3128,5 +3168,168 @@ body.menu-open{
     text-shadow:0 2px 8px rgba(0,0,0,.4);
 
     transition: opacity .5s ease;
+
+}
+
+
+/* ==========================================
+        DATE REVEAL OVERLAY
+========================================== */
+
+.date-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.72);
+
+    backdrop-filter:blur(14px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.45s;
+
+    z-index:99999;
+
+}
+
+.date-overlay.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+.date-modal{
+
+    position:relative;
+
+    width:min(92vw,430px);
+
+    transform:scale(.88);
+
+    transition:transform .45s ease;
+
+}
+
+.date-overlay.show .date-modal{
+
+    transform:scale(1);
+
+}
+
+.overlay-date-image{
+
+    width:100%;
+
+    display:block;
+
+}
+
+#overlayScratchCanvas{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+}
+
+.continue-hint{
+
+    position:absolute;
+
+    text-align:center;
+
+    width:100%;
+
+    white-space:nowrap;
+
+    left:50%;
+
+    bottom:-65px;
+
+    transform:translateX(-50%);
+
+    color:#fff;
+
+    font-size:16px;
+
+    letter-spacing:.8px;
+
+    opacity:0;
+
+    transition:.4s;
+
+}
+
+.continue-hint.show{
+
+    opacity:1;
+
+}
+
+#dateRevealTrigger{
+
+    height:1px;
+
+}
+
+
+.scratch-wrapper{
+
+    position:relative;
+
+}
+
+#overlayScratchCanvas{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    touch-action:none;
+
+}
+
+.hero-date-wrapper{
+
+    width:100%;
+
+    max-width:430px;
+
+    margin:45px auto 25px;
+
+    padding:18px;
+
+}
+
+.hero-date-card{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:18px;
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.12);
 
 }
