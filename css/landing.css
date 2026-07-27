@@ -144,7 +144,13 @@ button{
     min-height:100dvh;
     overflow-y:auto;
     overflow-x:hidden;
-    background:transparent;
+    background:
+        url("../assets/images/luxury-background.webp")
+        center top;
+
+    background-size:100% auto;
+
+    background-repeat:repeat-y;
 
     opacity:0;
     visibility:hidden;
