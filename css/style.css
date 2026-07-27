@@ -46,21 +46,10 @@ body{
     font-family:'Poppins',sans-serif;
     color:var(--text);
 
-    line-height:1.7;
-    letter-spacing:.3px;
-
     overflow-x:hidden;
 
-    background:
-        url("../assets/images/luxury-background.webp");
-
-    background-size:cover;
-
-    background-position:center top;
-
-    background-repeat:no-repeat;
-
-    background-attachment:fixed;
+    background:url("../assets/images/luxury-background.webp")
+               center top/100% auto repeat-y;
 
 }
 
@@ -3490,7 +3479,7 @@ box-shadow:
 
 }
 
-.site-bg{
+/*.site-bg{
     position:fixed;
     inset:0;
 
@@ -3499,7 +3488,7 @@ box-shadow:
     z-index:-1;
 
     pointer-events:none;
-}
+}*/
 
 #website{
     background:transparent;
