@@ -657,6 +657,23 @@ if (scratchCanvas) {
 
     });
 
+    function closeReveal() {
+
+    overlay.classList.remove("show");
+
+    website.style.overflowY = "auto";
+
+    heroTeaser.innerHTML = `
+        <div class="hero-date-wrapper">
+            <img
+                src="assets/images/wedding-date.png"
+                class="hero-date-card"
+                alt="Wedding Date">
+        </div>
+    `;
+
+}
+
     function checkProgress() {
 
         if (revealed) return;
@@ -711,22 +728,7 @@ const percent =
     },800);
 
 }
-function closeReveal() {
 
-    overlay.classList.remove("show");
-
-    website.style.overflowY = "auto";
-
-    heroTeaser.innerHTML = `
-        <div class="hero-date-wrapper">
-            <img
-                src="assets/images/wedding-date.png"
-                class="hero-date-card"
-                alt="Wedding Date">
-        </div>
-    `;
-
-}
 
     }
 

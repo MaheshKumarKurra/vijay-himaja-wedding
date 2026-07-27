@@ -42,12 +42,75 @@ scroll-padding-top:120px;
 }
 
 body{
-font-family:'Poppins',sans-serif;
-background:#F8F3EA;
-color:var(--text);
-overflow-x:hidden;
-line-height:1.7;
-letter-spacing:.3px;
+
+    font-family:'Poppins',sans-serif;
+    color:var(--text);
+
+    line-height:1.7;
+    letter-spacing:.3px;
+
+    overflow-x:hidden;
+
+    background:
+        url("../assets/images/luxury-background.webp");
+
+    background-size:cover;
+
+    background-position:center top;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+
+}
+
+@media (max-width:768px){
+
+    body{
+
+        background-attachment:scroll;
+
+    }
+
+}
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+    linear-gradient(
+        rgba(255,255,255,.04),
+        rgba(255,255,255,.04));
+
+    z-index:-1;
+
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+        radial-gradient(circle,
+        transparent 60%,
+        rgba(0,0,0,.05) 100%);
+
+    z-index:-1;
+
 }
 
 /* ===========================
@@ -1790,7 +1853,7 @@ linear-gradient(
 
     position:relative;
 
-    background:rgba(255,255,255,.65);
+    background:rgba(255,252,248,.72);
 
     backdrop-filter:blur(18px);
 
@@ -3392,5 +3455,37 @@ body.menu-open{
 
     box-shadow:
         0 20px 45px rgba(0,0,0,.12);
+
+}
+
+.person-card,
+.schedule-card,
+.venue-card,
+.rsvp-form,
+.time-box,
+.timeline-content{
+
+    background:rgba(255,252,248,.74);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(212,175,55,.22);
+
+box-shadow:
+0 20px 45px rgba(0,0,0,.08);
+}
+
+.hero-card,
+.hero-date-wrapper{
+
+    padding:12px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(8px);
+
+    border:1px solid rgba(255,255,255,.25);
 
 }
