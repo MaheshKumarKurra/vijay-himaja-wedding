@@ -1374,7 +1374,7 @@ transform:scale(1.08);
 
 #couple{
 
-    padding:12px 8%;
+    padding:30px 8% 40px;
 
     background:#fffaf8;
 
@@ -1408,15 +1408,13 @@ transform:scale(1.08);
 
     max-width:1400px;
 
-    margin:auto;
+    margin:40px auto 0;
 
 }
 
 .person-card{
 
     width:320px;
-
-    background:var(--glass);
 
     backdrop-filter:blur(18px);
 
@@ -1426,11 +1424,8 @@ transform:scale(1.08);
 
     overflow:hidden;
 
-    box-shadow:var(--shadow);
-
     transition:.45s ease;
 
-    padding:18px;
 
 }
 
@@ -1446,18 +1441,17 @@ transform:scale(1.08);
 
     width:100%;
 
-    height:460px;
+    margin:0;
 
-    border-radius: 22px;
+    height:430px;
+
+    border-radius:28px 28px 0 0;
 
     object-fit:cover;
 
     object-position:center top;
 
-    transition:.5s;
-
-    display: block;
-
+    display:block;
 }
 
 .person-card:hover img{
@@ -1490,19 +1484,6 @@ transform:scale(1.08);
 
 }
 
-.social{
-
-    background:linear-gradient(90deg,#f8f2ef,#fff);
-
-    padding:20px;
-
-    font-size:18px;
-
-    color:var(--primary);
-
-    font-weight:500;
-
-}
 
 .heart-divider{
 
@@ -1543,7 +1524,7 @@ transform:scale(1.08);
 
 #story{
 
-    padding:120px 8%;
+    padding:40px 8%;
 
     background:#fff;
 
@@ -2972,7 +2953,7 @@ color:white;
 
 .countdown-container h2{
 
-    font-size:70px;
+    font-size:50px;
 
     line-height:1.15;
 
@@ -2994,9 +2975,9 @@ color:white;
 
 .person-card{
 
-    width:155px;
+    width:200px;
 
-    padding:12px;
+    padding:0px;
 
     border-radius:24px;
 
@@ -3004,7 +2985,9 @@ color:white;
 
 .person-card img{
 
-    height:215px;
+    height:255px;
+
+    object-fit:cover;
 
     border-radius:18px;
 
@@ -3026,21 +3009,14 @@ color:white;
 
 }
 
-.social{
-
-    padding:14px;
-
-    font-size:13px;
-
-}
 
 .heart-divider{
 
-    width:48px;
+    width:34px;
 
-    height:48px;
+    height:34px;
 
-    font-size:22px;
+    font-size:16px;
 
     margin-top:95px;
 }
@@ -3727,7 +3703,6 @@ body.menu-open{
 
 }
 
-.person-card,
 .schedule-card,
 .venue-card,
 .rsvp-form,
@@ -3805,4 +3780,10 @@ box-shadow:
 #rsvp,
 #footer{
     background:transparent;
+}
+
+.couple-title{
+    font-size:90px;
+
+    margin-bottom:500px;
 }
