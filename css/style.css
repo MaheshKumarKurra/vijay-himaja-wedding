@@ -1402,7 +1402,7 @@ transform:scale(1.08);
 
     align-items:center;
 
-    gap:90px;
+    gap:50px;
 
     flex-wrap:wrap;
 
@@ -1414,7 +1414,7 @@ transform:scale(1.08);
 
 .person-card{
 
-    width:370px;
+    width:320px;
 
     background:var(--glass);
 
@@ -1429,6 +1429,8 @@ transform:scale(1.08);
     box-shadow:var(--shadow);
 
     transition:.45s ease;
+
+    padding:18px;
 
 }
 
@@ -1446,11 +1448,15 @@ transform:scale(1.08);
 
     height:460px;
 
+    border-radius: 22px;
+
     object-fit:cover;
 
     object-position:center top;
 
     transition:.5s;
+
+    display: block;
 
 }
 
@@ -2972,10 +2978,71 @@ color:white;
 
 }
 
+.couple-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    flex-wrap:nowrap;
+
+    gap:14px;
+
+}
+
 .person-card{
 
-    width:100%;
+    width:155px;
 
+    padding:12px;
+
+    border-radius:24px;
+
+}
+
+.person-card img{
+
+    height:215px;
+
+    border-radius:18px;
+
+}
+
+.person-card h3{
+
+    font-size:34px;
+
+    margin-top:18px;
+
+}
+
+.person-card p{
+
+    font-size:14px;
+
+    margin:8px 0 18px;
+
+}
+
+.social{
+
+    padding:14px;
+
+    font-size:13px;
+
+}
+
+.heart-divider{
+
+    width:48px;
+
+    height:48px;
+
+    font-size:22px;
+
+    margin-top:95px;
 }
 
 .gallery-grid{
