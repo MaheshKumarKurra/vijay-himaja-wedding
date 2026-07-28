@@ -1416,9 +1416,7 @@ transform:scale(1.08);
 
     width:320px;
 
-    backdrop-filter:blur(18px);
-
-    border:1px solid rgba(255,255,255,.35);
+    
 
     border-radius:var(--radius);
 
@@ -1445,7 +1443,7 @@ transform:scale(1.08);
 
     height:430px;
 
-    border-radius:28px 28px 0 0;
+    border-radius:28px 28px 28px 28px;
 
     object-fit:cover;
 
