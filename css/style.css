@@ -1051,7 +1051,7 @@ transform:rotate(180deg);
 
     min-height:100vh;
 
-    padding-top:60px;
+    padding-top:30px;
 
     display:flex;
 
@@ -1101,7 +1101,7 @@ transform:rotate(180deg);
 
     font-size:22px;
 
-    color:#666;
+    color:var(--primary);
 
     margin-bottom:40px;
 
