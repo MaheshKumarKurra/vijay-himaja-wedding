@@ -1043,19 +1043,53 @@ transform:rotate(180deg);
 
 }
 
-/* ==========================
-   COUNTDOWN
-========================== */
-
-#countdown{
-
-    padding-top:20px;
+.divider{
 
     display:flex;
 
     justify-content:center;
 
     align-items:center;
+
+    gap:16px;
+
+    margin-bottom:28px;
+
+}
+
+.divider .line{
+
+    width:70px;
+
+    height:1px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(212,175,55,.7),
+        transparent
+    );
+
+}
+
+.divider .ornament{
+
+    color:#C89A72;
+
+    font-size:22px;
+
+}
+
+/* ==========================
+   COUNTDOWN
+========================== */
+
+#countdown{
+
+    padding:20px 20px 100px;
+
+    justify-content:center;
+
 
     background:
     linear-gradient(rgba(255,255,255,.65),
@@ -1092,6 +1126,7 @@ transform:rotate(180deg);
     color:#7A5B3A;
 
     margin-bottom:20px;
+    
 
 }
 
@@ -1125,7 +1160,7 @@ transform:rotate(180deg);
 
     height:150px;
 
-    border-radius:28px;
+    border-radius:22px;
 
     display:flex;
 
@@ -1136,16 +1171,20 @@ transform:rotate(180deg);
     align-items:center;
 
     background:
-        linear-gradient(
-            180deg,
-            #fffdf8 0%,
-            #faf3e8 100%
-        );
+
+linear-gradient(
+180deg,
+#FFFCF7 0%,
+#F8F1E8 100%
+);
 
     border:1px solid rgba(201,170,110,.35);
 
     box-shadow:
-        0 12px 30px rgba(0,0,0,.08),
+
+0 10px 25px rgba(0,0,0,.06),
+
+0 20px 45px rgba(0,0,0,.04),
         inset 0 1px 0 rgba(255,255,255,.9);
 
     transition:.35s ease;
@@ -1153,6 +1192,96 @@ transform:rotate(180deg);
     overflow:hidden;
 
 }
+
+.shine{
+
+    position:absolute;
+
+    top:0;
+    left:-180%;
+
+    width:40%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.08),
+        rgba(255,255,255,.45),
+        rgba(255,255,255,.08),
+        transparent
+    );
+
+    transform:skewX(-25deg);
+
+    animation:plaqueShine 5s ease-in-out infinite;
+
+    pointer-events:none;
+
+}
+
+@keyframes plaqueShine{
+
+    0%{
+
+        left:-180%;
+
+    }
+
+    20%{
+
+        left:180%;
+
+    }
+
+    100%{
+
+        left:180%;
+
+    }
+
+}
+
+.time-box:nth-child(1) .shine{
+    
+    animation:shineLeftToRight 10s ease-in-out infinite;
+}
+
+.time-box:nth-child(4) .shine{
+    
+    animation:shineLeftToRight 10s ease-in-out infinite;
+    animation-delay:.6s;
+}
+
+.time-box:nth-child(2) .shine{
+    
+    animation:shineLeftToRight 10s ease-in-out infinite;
+    animation-delay:0.35s;
+}
+
+.time-box:nth-child(3) .shine{
+
+    animation:shineLeftToRight 10s ease-in-out infinite;
+    animation-delay:0.33s;
+}
+
+
+@keyframes shineLeftToRight{
+
+    0%{
+        left:-180%;
+    }
+
+    20%{
+        left:180%;
+    }
+
+    100%{
+        left:180%;
+    }
+
+}
+
 
 .time-box::before{
 
@@ -1173,6 +1302,8 @@ transform:rotate(180deg);
     opacity:.8;
 
 }
+
+
 
 .time-box:not(:last-child)::after{
 
@@ -1212,7 +1343,7 @@ transform:scale(1.08);
 
     margin-top:35px;
 
-    font-size:48px;
+    font-size:54px;
 
     font-weight:600;
 
@@ -1243,7 +1374,7 @@ transform:scale(1.08);
 
 #couple{
 
-    padding:120px 8%;
+    padding:12px 8%;
 
     background:#fffaf8;
 
@@ -2797,7 +2928,7 @@ color:white;
 
 .section-title{
 
-    font-size:52px;
+    font-size:70px;
 
 }
 
@@ -2835,7 +2966,7 @@ color:white;
 
 .countdown-container h2{
 
-    font-size:58px;
+    font-size:70px;
 
     line-height:1.15;
 
@@ -2929,7 +3060,7 @@ color:white;
 
 .section-title{
 
-    font-size:44px;
+    font-size:70px;
 
 }
 
