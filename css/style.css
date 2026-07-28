@@ -3492,6 +3492,22 @@ box-shadow:
 
     pointer-events:none;
 
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:opacity .5s ease;
+
+    z-index:0;
+
+}
+
+.site-bg.show{
+
+    opacity:1;
+
+    visibility:visible;
+
 }
 
 #website{

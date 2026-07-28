@@ -78,6 +78,8 @@ weddingMusic.play();
 
         website.classList.add("show");
 
+        document.querySelector(".site-bg").classList.add("show");
+
         const hero = document.querySelector(".hero");
 
         hero.classList.add("reveal");
