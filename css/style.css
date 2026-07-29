@@ -1462,17 +1462,21 @@ transform:scale(1.08);
 
     margin-top:28px;
 
-    font-size:38px;
+    font-weight: 700;
+
+    font-size:40px;
 
     font-family:'Cormorant Garamond',serif;
 
-    color:var(--primary);
+    color:#8F3D56;
 
 }
 
 .person-card p{
 
     color:#777;
+
+    font-weight: 1000;
 
     margin:12px 0 25px;
 
