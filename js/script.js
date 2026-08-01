@@ -1006,6 +1006,12 @@ Celebration.reset=function(){
 
 Celebration.interaction.innerHTML="";
 
+Celebration.image.src = "";
+
+Celebration.image.style.opacity = "0";
+
+Celebration.image.style.pointerEvents = "none";
+
 }
 
 Celebration.show=function(){
@@ -1033,8 +1039,9 @@ Celebration.open=function(eventName){
     this.title.textContent=
         data.title;
 
-    this.image.src=
-        data.image;
+    this.image.src = "";
+this.image.style.opacity = "0";
+this.image.style.pointerEvents = "none";
 
     
 
@@ -1068,6 +1075,9 @@ Celebration.open=function(eventName){
         }
 
         else{
+
+            Celebration.image.src = Celebration.data.haldi.image;
+Celebration.image.style.opacity = "1";
 
             Haldi.init();
 
@@ -1578,6 +1588,13 @@ Haldi.complete=function(){
 
         moveTimeline(0);
 
+        Celebration.image.src =
+    Celebration.data.haldi.image;
+
+Celebration.image.style.opacity = "1";
+
+Celebration.image.style.pointerEvents = "auto";
+
         Celebration.timer =
 setTimeout(()=>{
 
@@ -1689,21 +1706,23 @@ function createHaldiBurst(){
 
 function showCompletedHaldi(){
 
-    Celebration.canvas.style.display =
-    "none";
+    Celebration.image.src =
+        Celebration.data.haldi.image;
 
-    Celebration.skip.style.display =
-    "none";
+    Celebration.image.style.opacity = "1";
 
-    Celebration.wrapper.style.transform =
-    "translateY(-10px) scale(1.03)";
+    Celebration.image.style.pointerEvents = "auto";
 
-    Celebration.instruction.style.display =
-    "none";
+    Celebration.canvas.style.display="none";
 
-    Celebration.hint.classList.add(
-        "show"
-    );
+    Celebration.skip.style.display="none";
+
+    Celebration.wrapper.style.transform=
+        "translateY(-10px) scale(1.03)";
+
+    Celebration.instruction.style.display="none";
+
+    Celebration.hint.classList.add("show");
 
 }
 
@@ -1765,20 +1784,12 @@ Mehendi.init=function(){
 
     Celebration.skip.style.display="none";
 
-    Celebration.canvas.style.display="block";
+    Celebration.canvas.style.display="none";
 
-    Celebration.canvas.width=
-        Celebration.canvas.offsetWidth;
+    Celebration.image.style.opacity = "1";
+Celebration.image.src = this.images["000"];
 
-    Celebration.canvas.height=
-        Celebration.canvas.offsetHeight;
-
-    Celebration.canvas.style.opacity="1";
-
-    Celebration.canvas.style.pointerEvents="auto";
-
-    Celebration.image.src=
-        this.images["000"];
+Celebration.image.style.pointerEvents = "auto";
 
     Celebration.skip.style.display = "block";
 
@@ -1795,7 +1806,7 @@ Mehendi.init=function(){
 Mehendi.getPoint=function(e){
 
     const rect =
-    Celebration.canvas.getBoundingClientRect();
+    Celebration.image.getBoundingClientRect();
 
     if(e.touches){
 
@@ -1822,10 +1833,10 @@ Mehendi.getPoint=function(e){
 Mehendi.detectPetal=function(x,y){
 
     const w =
-    Celebration.canvas.width;
+Celebration.image.clientWidth;
 
-    const h =
-    Celebration.canvas.height;
+const h =
+Celebration.image.clientHeight;
 
     /* TOP */
 
@@ -1887,8 +1898,7 @@ Mehendi.detectPetal=function(x,y){
 
 Mehendi.bindEvents=function(){
 
-    const canvas =
-    Celebration.canvas;
+    const canvas = Celebration.image;
 
     canvas.onmousedown=()=>{
 
@@ -2145,6 +2155,8 @@ Mehendi.reveal=function(){
 
     Celebration.image.style.opacity="1";
 
+    Celebration.image.style.pointerEvents = "auto";
+
     /* Hide tracing canvas */
 
     Celebration.canvas.style.opacity="0";
@@ -2215,6 +2227,9 @@ Wedding.init=function(){
     Celebration.image.src=
     "assets/images/wedding-activity.png";
 
+    Celebration.image.style.opacity = "1";
+Celebration.image.style.pointerEvents = "auto";
+
     Celebration.instruction.textContent=
     "Beat the Drum 5 Times";
 
@@ -2254,8 +2269,12 @@ document.getElementById("weddingOverlay")
 
 function showCompletedWedding(){
 
-    Celebration.image.src=
-    Celebration.data.wedding.image;
+    Celebration.image.src =
+        Celebration.data.wedding.image;
+
+    Celebration.image.style.opacity = "1";
+
+    Celebration.image.style.pointerEvents = "auto";
 
     Celebration.canvas.style.display="none";
 
@@ -2265,13 +2284,13 @@ function showCompletedWedding(){
 
     Celebration.instruction.style.display="none";
 
-    Celebration.hint.textContent=
-    "✦ Tap outside the invitation to continue ✦";
+    Celebration.hint.textContent =
+        "✦ Tap outside the invitation to continue ✦";
 
     Celebration.hint.classList.add("show");
 
     document.getElementById("weddingOverlay")
-.style.display = "none";
+        .style.display="none";
 
 }
 
@@ -2518,15 +2537,18 @@ Wedding.reveal=function(){
 
     setTimeout(()=>{
 
-        document
-.getElementById("weddingOverlay")
-.style.display="none";
+    document
+    .getElementById("weddingOverlay")
+    .style.display="none";
 
-        Celebration.image.src=
+    Celebration.image.src =
+    Celebration.data.wedding.image;
 
-        Celebration.data.wedding.image;
+    Celebration.image.style.opacity = "1";
 
-    },350);
+    Celebration.image.style.pointerEvents = "auto";
+
+},350);
 
     Celebration.interaction.innerHTML="";
 
@@ -2763,8 +2785,6 @@ Lunch.init=function(){
 
     Celebration.hint.classList.remove("show");
 
-    this.hideImage();
-
     Celebration.image.style.pointerEvents = "none";
 
     this.overlay.style.display = "block";
@@ -2782,6 +2802,11 @@ Lunch.init=function(){
         "lunchStage"
 
     );
+
+    Celebration.image.src =
+this.stages[0];
+
+Celebration.image.style.opacity="1";
 
     this.hand=
 
