@@ -3813,7 +3813,7 @@ box-shadow:
 
     margin-top:12px;
 
-    margin-bottom:85px;
+    margin-bottom:10px;
 
     line-height:1.8;
 
@@ -4804,11 +4804,11 @@ box-shadow:
 
     position:absolute;
 
-    width:300px;
+    width:350px;
 
-    left:-60px;
+    left:-80px;
 
-    bottom:15px;
+    bottom:0px;
 
     z-index:100;
 

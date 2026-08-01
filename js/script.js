@@ -1049,7 +1049,7 @@ Celebration.open=function(eventName){
 
     lunch:3
 
-};
+    };
 
 moveTimeline(map[eventName]);
 
@@ -1131,13 +1131,58 @@ Celebration.dialog.addEventListener("click",(e)=>{
 
 });
 
-Celebration.dialog.addEventListener("click",(e)=>{
+function closeCelebrationModal(e){
 
-    e.stopPropagation();
+    if(!Celebration.hint.classList.contains("show")) return;
+
+    if(Celebration.dialog.contains(e.target)) return;
+
+    clearTimeout(Celebration.timer);
+
+    Celebration.hide();
+
+}
+
+Celebration.modal.addEventListener(
+    "click",
+    closeCelebrationModal
+);
+
+Celebration.modal.addEventListener(
+    "touchstart",
+    closeCelebrationModal,
+    {passive:true}
+);
+
+Celebration.hint.addEventListener("click",()=>{
+
+    clearTimeout(Celebration.timer);
+
+    Celebration.hide();
 
 });
 
-Celebration.modal.addEventListener("click",()=>{
+Celebration.hint.addEventListener("touchstart",()=>{
+
+    clearTimeout(Celebration.timer);
+
+    Celebration.hide();
+
+});
+
+Celebration.title.addEventListener("click",()=>{
+
+    if(!Celebration.hint.classList.contains("show")) return;
+
+    clearTimeout(Celebration.timer);
+
+    Celebration.hide();
+
+});
+
+Celebration.title.addEventListener("touchstart",()=>{
+
+    if(!Celebration.hint.classList.contains("show")) return;
 
     clearTimeout(Celebration.timer);
 
@@ -2670,7 +2715,7 @@ const Lunch={
 
     startX:0,
 
-    startLeft:-60,
+    startLeft:-80,
 
     maxLeft:120,
 
