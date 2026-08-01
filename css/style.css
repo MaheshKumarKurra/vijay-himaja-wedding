@@ -1701,7 +1701,9 @@ transform:scale(1.08);
 
 #gallery{
 
-    padding:120px 8%;
+    padding:30px 8%;
+
+    padding-bottom: 70px;
 
     background:#fffaf8;
 
@@ -1852,7 +1854,9 @@ grid-template-columns:1fr;
 
 #venue{
 
-    padding:120px 8%;
+    padding:30px 8%;
+
+    padding-bottom: 70px;
 
     background:#fff;
 
@@ -1986,164 +1990,6 @@ linear-gradient(
 
 }
 
-/*=========================
-    SCHEDULE
-==========================*/
-
-#schedule{
-
-    padding:120px 8%;
-
-    background:#fffaf8;
-
-    text-align:center;
-
-}
-
-.schedule-subtitle{
-
-    font-size:20px;
-
-    color:#666;
-
-    margin-bottom:60px;
-
-}
-
-.schedule-container{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-
-    gap:35px;
-
-    max-width:1400px;
-
-    margin:60px auto 0;
-
-}
-
-.schedule-card{
-
-    position:relative;
-
-    background:rgba(255,252,248,.72);
-
-    backdrop-filter:blur(18px);
-
-    border-radius:var(--radius);
-
-    border:1px solid rgba(212,175,55,.25);
-
-    padding:45px 35px;
-
-    text-align:center;
-
-    box-shadow:var(--shadow);
-
-    transition:.4s ease;
-
-    overflow:hidden;
-
-}
-
-.schedule-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:0;
-
-    width:100%;
-
-    height:6px;
-
-    background:linear-gradient(
-        90deg,
-        #f6d365,
-        #fda085,
-        #b76e79
-    );
-
-}
-
-.schedule-card:hover{
-
-    transform:translateY(-10px);
-
-    box-shadow:0 30px 60px rgba(0,0,0,.12);
-
-}
-
-.schedule-icon{
-
-    font-size:58px;
-
-    margin-bottom:25px;
-
-}
-
-.schedule-card h3{
-
-    font-size:30px;
-
-    font-family:'Cormorant Garamond',serif;
-
-    color:var(--primary);
-
-    margin-bottom:15px;
-
-}
-
-.schedule-card p{
-
-    font-size:18px;
-
-    color:#666;
-
-    margin-bottom:10px;
-
-    line-height:1.7;
-
-}
-
-.schedule-card span{
-
-    display:inline-block;
-
-    margin-top:10px;
-
-    padding:8px 20px;
-
-    background:var(--secondary);
-
-    border-radius:30px;
-
-    color:var(--primary);
-
-    font-weight:600;
-
-}
-
-.highlight{
-
-    border:3px solid #b76e79;
-
-    transform:scale(1.04);
-
-    background:linear-gradient(
-        180deg,
-        rgba(255,255,255,.9),
-        rgba(248,242,239,.95)
-    );
-
-}
-
-
 
 /*=========================
         RSVP
@@ -2151,7 +1997,9 @@ linear-gradient(
 
 #rsvp{
 
-    padding:120px 8%;
+    padding:30px 8%;
+
+    padding-bottom: 70px;
 
     background:#fffaf8;
 
@@ -3783,8 +3631,8 @@ box-shadow:
 #gallery,
 #venue,
 #schedule,
-#rsvp,
-#footer{
+#rsvp
+{
     background:transparent;
 }
 
@@ -4070,7 +3918,7 @@ box-shadow:
 
     align-items:center;
 
-    /*transform:translateY(15px);*/
+    transform:translateY(15px);
 
 }
 
@@ -4235,6 +4083,7 @@ box-shadow:
         transform .45s cubic-bezier(.22,1,.36,1),
         opacity .35s;
 
+
 }
 
 .celebration-modal.show .celebration-dialog{
@@ -4347,12 +4196,13 @@ box-shadow:
 
     width:min(96%,480px);
 
-    margin:28px auto;
+    margin:28px auto ;
     align-self:center;
 
     transition:transform .4s ease;
 
 }
+
 
 #haldiCanvas{
 

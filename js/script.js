@@ -955,7 +955,7 @@ Celebration.data = {
 
         image:"assets/images/mehendi-card.png",
 
-        instruction:"Draw a mehendi design to reveal the invitation."
+        instruction:"Draw design on each leaf to reveal the invitation."
 
     },
 
@@ -1036,6 +1036,8 @@ Celebration.open=function(eventName){
     this.image.src=
         data.image;
 
+    
+
     this.instruction.textContent=
         data.instruction;
 
@@ -1051,8 +1053,6 @@ Celebration.open=function(eventName){
 
     };
 
-moveTimeline(map[eventName]);
-
     this.show();
 
     switch(eventName){
@@ -1060,6 +1060,8 @@ moveTimeline(map[eventName]);
     case "haldi":
 
         if(this.state.haldi){
+
+            moveTimeline(0);
 
             showCompletedHaldi();
 
@@ -1077,6 +1079,8 @@ moveTimeline(map[eventName]);
 
         if(this.state.mehendi){
 
+            moveTimeline(1);
+
             showCompletedMehendi();
 
         }
@@ -1093,6 +1097,8 @@ moveTimeline(map[eventName]);
 
     if(this.state.wedding){
 
+        moveTimeline(2);
+
         showCompletedWedding();
 
     }
@@ -1108,6 +1114,8 @@ moveTimeline(map[eventName]);
     case "lunch":
 
     if(this.state.lunch){
+
+        moveTimeline(3);
 
         showCompletedLunch();
 
@@ -1567,6 +1575,8 @@ Haldi.complete=function(){
         createHaldiBurst();
 
         unlockHaldiCard();
+
+        moveTimeline(0);
 
         Celebration.timer =
 setTimeout(()=>{
@@ -2158,6 +2168,8 @@ Mehendi.reveal=function(){
 
     unlockMehendiCard();
 
+    moveTimeline(1);
+
     Celebration.timer=setTimeout(()=>{
 
     if(Celebration.modal.classList.contains("show")){
@@ -2527,6 +2539,8 @@ Wedding.reveal=function(){
 
     unlockWeddingCard();
 
+    moveTimeline(2);
+
     Celebration.timer=setTimeout(()=>{
 
     if(Celebration.modal.classList.contains("show")){
@@ -2757,7 +2771,7 @@ Lunch.init=function(){
 
     Celebration.instruction.textContent=
 
-    "Wipe the banana leaf";
+    "Drag the hand to the right end 3 times";
 
     Celebration.instruction.style.display="block";
 
@@ -3017,6 +3031,8 @@ Lunch.complete=function(){
     Celebration.hint.classList.add("show");
 
     unlockLunchCard();
+
+    moveTimeline(3);
 
     showCompletedLunch();
 
