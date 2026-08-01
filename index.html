@@ -359,7 +359,7 @@ Optimize crop and alignment after receiving edited images.
 
             <div class="timeline-lotus">
 
-    <img src="assets/icons/lotus.svg" alt="Timeline Ornament" class="timeline-lotus-img">
+    <img src="assets/images/lotus.png" alt="Timeline Ornament" class="timeline-lotus-img">
 
 </div>
 
@@ -369,7 +369,7 @@ Optimize crop and alignment after receiving edited images.
 
     <div class="timeline-line"></div>
 
-    <div class="timeline-dot active" id="dot-haldi"></div>
+    <div class="timeline-dot" id="dot-haldi"></div>
 
     <div class="timeline-dot" id="dot-mehendi"></div>
 
@@ -407,9 +407,9 @@ id="haldi-row">
 
                     <div class="event-details">
 
-                        <p>🕒 6:00 PM onwards</p>
+                        <p>🕒 5:00 PM onwards</p>
 
-                        <p>📍 Taj Palace, Hyderabad</p>
+                        <p>📍 Our Residence, Kakinada</p>
 
                     </div>
 
@@ -469,9 +469,9 @@ id="mehendi-row">
 
                     <div class="event-details">
 
-                        <p>🕒 5:30 PM onwards</p>
+                        <p>🕒 5:00 PM onwards</p>
 
-                        <p>📍 Taj Palace, Hyderabad</p>
+                        <p>📍 Our Residence, Kakinada</p>
 
                     </div>
 
@@ -489,7 +489,7 @@ the deeper the love."
                     <div class="event-card locked"
      data-event="mehendi">
 
-                        <img src="assets/images/haldi-card.png">
+                        <img src="assets/images/mehendi-card.png">
 
                         <div class="card-overlay">
 
@@ -531,9 +531,9 @@ id="wedding-row">
 
                     <div class="event-details">
 
-                        <p>🕒 10:46 AM</p>
+                        <p>🕒 09:00 AM onwards</p>
 
-                        <p>📍 Taj Palace, Hyderabad</p>
+                        <p>📍 Wedding Hall, Kakinada</p>
 
                     </div>
 
@@ -552,7 +552,7 @@ a lifetime together."
                     <div class="event-card locked"
      data-event="wedding">
 
-                        <img src="assets/images/haldi-card.png">
+                        <img src="assets/images/wedding-card.png">
 
                         <div class="card-overlay">
 
@@ -596,7 +596,7 @@ id="lunch-row">
 
                         <p>🕒 12:00 PM onwards</p>
 
-                        <p>📍 Taj Palace, Hyderabad</p>
+                        <p>📍 Wedding Venue, Kakinada</p>
 
                     </div>
 
@@ -615,7 +615,7 @@ beautiful memories."
                     <div class="event-card locked"
      data-event="lunch">
 
-                        <img src="assets/images/haldi-card.png">
+                        <img src="assets/images/lunch-card.png">
 
                         <div class="card-overlay">
 
@@ -981,22 +981,58 @@ beautiful memories."
 
         <div class="celebration-card-wrapper">
 
-            <button
+    <button
         id="haldiSkipBtn"
         class="haldi-skip-btn">
 
         ▶ Reveal
 
     </button>
-            <img
-                id="celebrationModalImage"
-                class="celebration-image"
-                src=""
-                alt="">
 
-            <canvas id="haldiCanvas"></canvas>
+    <img
+        id="celebrationModalImage"
+        class="celebration-image"
+        src=""
+        alt="">
 
-        </div>
+    <div
+        id="weddingOverlay"
+        class="wedding-overlay">
+
+        <img
+            id="weddingDrum"
+            class="wedding-drum"
+            src="assets/images/drum.png"
+            alt="">
+
+    </div>
+
+    
+
+    <canvas id="haldiCanvas"></canvas>
+
+    <div
+    id="lunchOverlay"
+    class="lunch-overlay">
+
+    <img
+        id="lunchStage"
+        class="lunch-stage"
+        src=""
+        alt="">
+
+    <img
+        id="wipeHand"
+        class="wipe-hand"
+        src="assets/images/lunch/right-hand.png"
+        draggable="false"
+        alt="">
+
+    <div id="steamContainer"></div>
+
+</div>
+
+</div>
 
         <div class="celebration-content">
 

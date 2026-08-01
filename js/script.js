@@ -831,717 +831,51 @@ function positionTimeline(){
 
 function moveTimeline(index){
 
-    const timeline = document.querySelector(".timeline");
-    const lotus = document.querySelector(".timeline-lotus");
+    const timeline=document.querySelector(".timeline");
 
-    const dots = [
+    const lotus=document.querySelector(".timeline-lotus");
+
+    const dots=[
+
         document.getElementById("dot-haldi"),
+
         document.getElementById("dot-mehendi"),
+
         document.getElementById("dot-wedding"),
+
         document.getElementById("dot-lunch")
+
     ];
 
-    const LOTUS_OFFSET = 55;
+    const LOTUS_OFFSET=55;
 
-    lotus.style.top =
-        `${timeline.offsetTop + dots[index].offsetTop - LOTUS_OFFSET}px`;
+    if(!flowerStarted){
 
-    dots.forEach((dot,i)=>{
+        lotus.style.opacity="1";
 
-        dot.classList.toggle("active", i <= index);
+        flowerStarted=true;
 
-    });
+    }
+
+    lotus.style.top=
+
+        `${timeline.offsetTop+dots[index].offsetTop-LOTUS_OFFSET}px`;
+
+    dots[index].classList.add("active");
 
 }
 
 positionTimeline();
 
-moveTimeline(0);
+let flowerStarted = false;
 
 window.addEventListener("load", () => {
     positionTimeline();
-    moveTimeline(0);
 });
 
 window.addEventListener("resize", () => {
     positionTimeline();
-    moveTimeline(0);
 });
-
-
-
-/*======================================================
-BACKUP - OLD CELEBRATION MODULE
-Date: 2026-07-29
-
-/*====================================
-  CELEBRATION MODAL
-====================================*/
-
-/*======================================================
-
-const celebrationModal =
-document.getElementById("celebrationModal");
-
-const celebrationImage =
-document.getElementById("celebrationModalImage");
-
-const celebrationTitle =
-document.getElementById("celebrationTitle");
-
-const celebrationInstruction =
-document.getElementById("celebrationInstruction");
-
-const celebrationHint =
-document.getElementById("celebrationHint");
-
-let celebrationTimer;
-
-function openCelebrationModal(data){
-
-    console.log(data.title);
-
-    celebrationImage.src = data.image;
-
-    celebrationInstruction.style.display = "block";
-celebrationInstruction.style.visibility = "visible";
-celebrationInstruction.style.opacity = "1";
-
-celebrationHint.style.display = "none";
-celebrationHint.classList.remove("show");
-
-    celebrationTitle.textContent = data.title;
-
-    celebrationInstruction.textContent =
-        data.instruction;
-
-    const interaction =
-document.getElementById(
-"celebrationInteraction"
-);
-
-const haldiSkipBtn =
-document.getElementById("haldiSkipBtn");
-
-if(
-    data.event==="haldi" &&
-    haldiCompleted){
-
-    finalHaldi();
-
-    return;
-
-}
-
-if(data.event==="haldi"){
-
-    haldiSkipBtn.style.display="flex";
-
-}else{
-
-    haldiSkipBtn.style.display="none";
-
-}
-
-interaction.innerHTML = "";
-
-    celebrationModal.classList.add("show");
-
-    if(data.event === "haldi"){
-
-    initHaldiScratch();
-
-}
-
-
-    celebrationHint.classList.remove("show");
-
-}
-
-function closeCelebrationModal(){
-
-    celebrationInstruction.style.display="block";
-
-celebrationInstruction.style.opacity="1";
-
-celebrationHint.classList.remove("show");
-
-celebrationHint.style.display="none";
-
-document.getElementById("haldiSkipBtn")
-.style.display="flex";
-
-const canvas =
-document.getElementById("haldiCanvas");
-
-canvas.style.display="block";
-canvas.style.opacity="1";
-canvas.style.pointerEvents="auto";
-
-
-    clearTimeout(celebrationTimer);
-
-    document.querySelector(".celebration-card-wrapper")
-.style.transform =
-"translateY(0) scale(1)";
-
-}
-
-const modalDialog =
-document.querySelector(".celebration-dialog");
-
-const backdrop =
-document.querySelector(".celebration-backdrop");
-
-modalDialog.addEventListener("click",(e)=>{
-
-    e.stopPropagation();
-
-});
-
-celebrationModal.addEventListener("click",(e)=>{
-
-    if(
-        !document
-        .querySelector(".celebration-dialog")
-        .contains(e.target)
-    ){
-
-        closeCelebrationModal();
-
-    }
-
-});
-
-
-document.addEventListener("keydown",(e)=>{
-
-    if(e.key==="Escape"){
-
-        closeCelebrationModal();
-
-    }
-
-});
-
-const celebrationData = {
-
-    haldi:{
-    event:"haldi",
-    title:"Haldi",
-
-        image:"assets/images/haldi-card.png",
-
-        instruction:"Rub the turmeric to bless the couple."
-
-    },
-
-    mehendi:{
-
-        event:"mehendi",
-
-        title:"Mehendi",
-
-        image:"assets/images/mehendi-card.png",
-
-        instruction:"Draw a mehendi design to reveal the invitation."
-
-    },
-
-    wedding:{
-
-        event:"wedding",
-
-        title:"Wedding",
-
-        image:"assets/images/wedding-card.png",
-
-        instruction:"Press and hold the Shehnai for 3 seconds."
-
-    },
-
-    lunch:{
-
-        event:"lunch",
-
-        title:"Lunch",
-
-        image:"assets/images/lunch-card.png",
-
-        instruction:"Lift the banana leaf to reveal the feast."
-
-    }
-
-};
-
-const celebrationCards =
-document.querySelectorAll(".event-card");
-
-celebrationCards.forEach(card=>{
-
-    card.addEventListener("click",()=>{
-
-        const eventName = card.dataset.event;
-
-        if(eventName==="haldi"){
-
-            if(haldiCompleted){
-
-                finalHaldi();
-
-            }else{
-
-                openCelebrationModal(
-                    celebrationData[eventName]
-                );
-
-            }
-
-            return;
-
-        }
-
-        if(!card.classList.contains("locked")) return;
-
-        openCelebrationModal(
-            celebrationData[eventName]
-        );
-
-    });
-
-});
-
-====================================*/
-
-
-/*====================================
-  HALDI SCRATCH
-====================================*/
-
-/*====================================
-
-let haldiCanvas;
-let haldiCtx;
-
-let haldiScratching = false;
-let haldiRevealed = false;
-
-let haldiCompleted = false;
-
-function initHaldiScratch(){
-
-    haldiCanvas =
-    document.getElementById("haldiCanvas");
-
-    celebrationInstruction.style.display = "block";
-
-celebrationHint.style.display = "none";
-
-haldiCanvas.style.display = "block";
-
-    if(!haldiCanvas) return;
-
-    haldiCtx =
-    haldiCanvas.getContext("2d",{
-        willReadFrequently:true
-    });
-
-    haldiCanvas.width =
-    haldiCanvas.offsetWidth;
-
-    haldiCanvas.height =
-    haldiCanvas.offsetHeight;
-
-    haldiScratching = false;
-    haldiRevealed = false;
-
-    haldiCanvas.style.opacity = "1";
-haldiCanvas.style.pointerEvents = "auto";
-
-    drawHaldiOverlay();
-
-    bindHaldiEvents();
-
-}
-
-function drawHaldiOverlay(){
-
-    const texture = new Image();
-
-    texture.src =
-    "assets/images/haldi-overlay.png";
-
-    texture.onload = ()=>{
-
-        haldiCtx.globalCompositeOperation =
-        "source-over";
-
-        haldiCtx.clearRect(
-            0,
-            0,
-            haldiCanvas.width,
-            haldiCanvas.height
-        );
-
-        haldiCtx.drawImage(
-
-            texture,
-
-            0,
-
-            0,
-
-            haldiCanvas.width,
-
-            haldiCanvas.height
-
-        );
-
-    };
-
-}
-
-function bindHaldiEvents(){
-
-    haldiCanvas.onmousedown=()=>{
-
-        haldiScratching=true;
-
-        document.getElementById("haldiSkipBtn")
-        .style.display = "none";
-
-    };
-
-    haldiCanvas.onmouseup=()=>{
-
-        haldiScratching=false;
-
-    };
-
-    haldiCanvas.onmouseleave=()=>{
-
-        haldiScratching=false;
-
-    };
-
-    haldiCanvas.onmousemove=(e)=>{
-
-        if(!haldiScratching) return;
-
-        const p=getHaldiPoint(e);
-
-        rubHaldi(p.x,p.y);
-
-    };
-
-    haldiCanvas.ontouchstart=()=>{
-
-        haldiScratching=true;
-
-        document.getElementById("haldiSkipBtn")
-        .style.display = "none";
-
-    };
-
-    haldiCanvas.ontouchend=()=>{
-
-        haldiScratching=false;
-
-    };
-
-    haldiCanvas.ontouchmove=(e)=>{
-
-        e.preventDefault();
-
-        if(!haldiScratching) return;
-
-        const p=getHaldiPoint(e);
-
-        rubHaldi(p.x,p.y);
-
-    };
-
-}
-
-function getHaldiPoint(e){
-
-    const rect = haldiCanvas.getBoundingClientRect();
-
-    if(e.touches){
-
-        return{
-
-            x:e.touches[0].clientX-rect.left,
-
-            y:e.touches[0].clientY-rect.top
-
-        };
-
-    }
-
-    return{
-
-        x:e.clientX-rect.left,
-
-        y:e.clientY-rect.top
-
-    };
-
-}
-
-function rubHaldi(x,y){
-
-    if(haldiRevealed) return;
-
-    haldiCtx.globalCompositeOperation =
-    "destination-out";
-
-    haldiCtx.beginPath();
-
-    haldiCtx.arc(
-
-        x,
-
-        y,
-
-        32,
-
-        0,
-
-        Math.PI*2
-
-    );
-
-    haldiCtx.fill();
-    checkHaldiProgress();
-
-}
-
-const haldiSkipBtn =
-document.getElementById("haldiSkipBtn");
-
-haldiSkipBtn.addEventListener("click",()=>{
-
-    if(haldiRevealed) return;
-
-    haldiSkipBtn.style.display = "none";
-
-
-
-    haldiCanvas.style.transition =
-    "opacity .8s ease";
-
-haldiCanvas.style.opacity = "0";
-
-setTimeout(()=>{
-
-    finishHaldi();
-
-},800);
-
-});
-
-function checkHaldiProgress(){
-
-    if(haldiRevealed) return;
-
-    const pixels = haldiCtx.getImageData(
-
-        0,
-
-        0,
-
-        haldiCanvas.width,
-
-        haldiCanvas.height
-
-    ).data;
-
-    let transparent = 0;
-
-    for(let i=3;i<pixels.length;i+=4){
-
-        if(pixels[i]===0){
-
-            transparent++;
-
-        }
-
-    }
-
-    const total =
-        haldiCanvas.width *
-        haldiCanvas.height;
-
-    const percent =
-        (transparent/total)*100;
-
-    if(percent>=50){
-
-        finishHaldi();
-
-    }
-
-}
-
-function finishHaldi(){
-
-    if(haldiRevealed) return;
-
-    haldiRevealed = true;
-
-    haldiCompleted = true;
-
-    haldiCanvas.style.transition =
-        "opacity .8s ease";
-
-    haldiCanvas.style.opacity = "0";
-
-    setTimeout(()=>{
-
-        haldiCanvas.style.pointerEvents = "none";
-
-        // ⭐ Add it here
-        document.querySelector(".celebration-card-wrapper")
-            .style.transform = "translateY(-12px) scale(1.02)";
-
-        celebrationInstruction.style.opacity = "0";
-
-        setTimeout(()=>{
-
-            celebrationInstruction.style.display = "none";
-
-        
-            celebrationHint.style.display = "block";
-celebrationHint.classList.add("show");
-
-        },300);
-
-        createHaldiBurst();
-
-        moveTimeline(1);
-
-        const haldiCard =
-document.querySelector(
-'.event-card[data-event="haldi"]'
-);
-
-haldiCard.classList.remove("locked");
-
-haldiCard.querySelector("img").style.filter =
-"blur(0px)";
-
-haldiCard.querySelector(".card-overlay")
-.style.display = "none";
-
-        celebrationTimer = setTimeout(()=>{
-
-            closeCelebrationModal();
-
-        },5000);
-
-    },800);
-
-}
-
-function finalHaldi(){
-
-    celebrationModal.classList.add("show");
-
-    celebrationTitle.textContent = "Haldi";
-
-    celebrationImage.src =
-        "assets/images/haldi-card.png";
-
-    celebrationHint.style.display = "block";
-    celebrationHint.classList.add("show");
-
-    celebrationInstruction.style.display = "none";
-
-    
-    celebrationHint.classList.add("show");
-    celebrationHint.textContent =
-        "✦ Tap anywhere to continue ✦";
-
-    document.querySelector(".celebration-card-wrapper")
-.style.transform =
-"translateY(-12px) scale(1.02)";
-
-celebrationImage.style.filter = "blur(0)";
-
-    const canvas =
-    document.getElementById("haldiCanvas");
-
-    if(canvas){
-
-        canvas.style.display = "none";
-
-    }
-
-    const skipBtn =
-    document.getElementById("haldiSkipBtn");
-
-    if(skipBtn){
-
-        skipBtn.style.display = "none";
-
-    }
-
-}
-
-
-function createHaldiBurst(){
-
-    const wrapper =
-    document.querySelector(".celebration-card-wrapper");
-
-    for(let i=0;i<18;i++){
-
-        const p=document.createElement("span");
-
-        p.className="haldi-particle";
-
-        p.innerHTML=Math.random()>.5?"✨":"🌼";
-
-        p.style.left="50%";
-
-        p.style.top="50%";
-
-        p.style.setProperty(
-
-            "--x",
-
-            `${(Math.random()-.5)*220}px`
-
-        );
-
-        p.style.setProperty(
-
-            "--y",
-
-            `${(Math.random()-.5)*220}px`
-
-        );
-
-        wrapper.appendChild(p);
-
-        p.addEventListener("animationend",()=>{
-
-            p.remove();
-
-        });
-
-    }
-
-}
-
-
-
-
-Reason:
-Replacing with Celebration Module V2.
-
-======================================================*/
 
 
 
@@ -1667,6 +1001,11 @@ Celebration.reset=function(){
 
     this.skip.style.display="none";
 
+    document.getElementById("weddingOverlay")
+.style.display="none";
+
+Celebration.interaction.innerHTML="";
+
 }
 
 Celebration.show=function(){
@@ -1699,6 +1038,20 @@ Celebration.open=function(eventName){
 
     this.instruction.textContent=
         data.instruction;
+
+    const map={
+
+    haldi:0,
+
+    mehendi:1,
+
+    wedding:2,
+
+    lunch:3
+
+};
+
+moveTimeline(map[eventName]);
 
     this.show();
 
@@ -1747,6 +1100,22 @@ Celebration.open=function(eventName){
     else{
 
         Wedding.init();
+
+    }
+
+    break;
+
+    case "lunch":
+
+    if(this.state.lunch){
+
+        showCompletedLunch();
+
+    }
+
+    else{
+
+        Lunch.init();
 
     }
 
@@ -2154,8 +1523,6 @@ Haldi.complete=function(){
 
         unlockHaldiCard();
 
-        moveTimeline(1);
-
         Celebration.timer =
 setTimeout(()=>{
 
@@ -2357,6 +1724,14 @@ Mehendi.init=function(){
 
     Celebration.image.src=
         this.images["000"];
+
+    Celebration.skip.style.display = "block";
+
+    Celebration.skip.onclick = () => {
+
+    Mehendi.complete();
+
+    };
 
     this.bindEvents();
 
@@ -2628,6 +2003,8 @@ Mehendi.complete=function(){
 
     Celebration.state.mehendi=true;
 
+    Celebration.skip.style.display="none";
+
     this.sparkle();
 
 }
@@ -2736,7 +2113,15 @@ Mehendi.reveal=function(){
 
     unlockMehendiCard();
 
-    moveTimeline(2);
+    Celebration.timer=setTimeout(()=>{
+
+    if(Celebration.modal.classList.contains("show")){
+
+        Celebration.hide();
+
+    }
+
+},5000);
 
 }
 
@@ -2747,163 +2132,898 @@ Mehendi.reveal=function(){
 
 const Wedding={
 
-    holding:false,
+    taps:0,
 
     completed:false,
 
-    progress:0,
+    drum:null,
 
-    timer:null,
-
-    interval:null
+    dots:[]
 
 };
+
 
 Wedding.init=function(){
 
     this.completed=false;
 
-    this.progress=0;
+    this.taps=0;
 
     Celebration.canvas.style.display="none";
 
     Celebration.skip.style.display="none";
 
+    Celebration.hint.classList.remove("show");
+
     Celebration.image.src=
-    Celebration.data.wedding.image;
+    "assets/images/wedding-activity.png";
 
-    Celebration.interaction.innerHTML=
+    Celebration.instruction.textContent=
+    "Beat the Drum 5 Times";
 
-    `
-    <div class="hold-wrapper">
+    Celebration.instruction.style.display="block";
 
-        <div class="hold-circle">
+    Celebration.interaction.innerHTML=`
 
-            <img
-            src="assets/icons/shehnai.svg"
-            class="hold-icon">
+        <div class="drum-progress">
 
-            <div
-            class="hold-progress">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
 
-            </div>
+</div>
 
-        </div>
+`;
 
-        <p class="hold-text">
+document.getElementById("weddingOverlay")
+.style.display="flex";  
 
-            Press & Hold
+    
+    Celebration.skip.style.display = "block";
 
-        </p>
+    Celebration.skip.onclick = () => {
 
-    </div>
-    `;
+    Wedding.complete();
+
+    };
+
+
 
     this.bindEvents();
 
 }
 
-Wedding.bindEvents=function(){
-
-    const circle =
-    document.querySelector(".hold-circle");
-
-    if(!circle) return;
-
-    circle.onmousedown=()=>{
-
-        this.start();
-
-    };
-
-    circle.onmouseup=()=>{
-
-        this.stop();
-
-    };
-
-    circle.onmouseleave=()=>{
-
-        this.stop();
-
-    };
-
-    circle.ontouchstart=(e)=>{
-
-        e.preventDefault();
-
-        this.start();
-
-    };
-
-    circle.ontouchend=()=>{
-
-        this.stop();
-
-    };
-
-}
-
-Wedding.start=function(){
-
-    if(this.completed) return;
-
-    this.holding=true;
-
-    const progress =
-    document.querySelector(".hold-progress");
-
-    this.progress=0;
-
-    clearInterval(this.interval);
-
-    this.interval=setInterval(()=>{
-
-        this.progress++;
-
-        progress.style.width=
-
-        this.progress+"%";
-
-        if(this.progress>=100){
-
-            clearInterval(this.interval);
-
-            this.complete();
-
-        }
-
-    },30);
-
-}
-
-Wedding.stop=function(){
-
-    if(this.completed) return;
-
-    this.holding=false;
-
-    clearInterval(this.interval);
-
-    this.progress=0;
-
-    const progress =
-    document.querySelector(".hold-progress");
-
-    if(progress){
-
-        progress.style.width="0%";
-
-    }
-
-}
-
 function showCompletedWedding(){
+
+    Celebration.image.src=
+    Celebration.data.wedding.image;
+
+    Celebration.canvas.style.display="none";
+
+    Celebration.skip.style.display="none";
 
     Celebration.interaction.innerHTML="";
 
     Celebration.instruction.style.display="none";
 
+    Celebration.hint.textContent=
+    "✦ Tap outside the invitation to continue ✦";
+
     Celebration.hint.classList.add("show");
+
+    document.getElementById("weddingOverlay")
+.style.display = "none";
+
+}
+
+Wedding.bindEvents=function(){
+
+    this.drum =
+    document.getElementById("weddingDrum");
+
+    this.dots =
+    document.querySelectorAll(
+        ".drum-progress span"
+    );
+
+    this.drum.addEventListener(
+    "click",
+    (e)=>{
+
+        this.tap(e);
+
+    }
+);
+
+}
+
+Wedding.tap=function(e){
+
+    if(this.completed) return;
+
+    if(this.taps>=5) return;
+
+    this.taps++;
+
+    this.animateDrum();
+
+    this.sparkle(e);
+
+    this.updateProgress();
+
+    if(this.taps===5){
+
+    setTimeout(()=>{
+
+        this.finalCelebration();
+
+    },350);
+
+}
+
+}
+
+Wedding.animateDrum=function(){
+
+    this.drum.animate(
+
+        [
+
+            {
+                transform:"scale(1)"
+            },
+
+            {
+                transform:"scale(.95)"
+            },
+
+            {
+                transform:"scale(1.08)"
+            },
+
+            {
+                transform:"scale(1)"
+            }
+
+        ],
+
+        {
+
+            duration:180,
+
+            easing:"ease-out"
+
+        }
+
+    );
+
+}
+
+
+Wedding.updateProgress=function(){
+
+    const dot=this.dots[this.taps-1];
+
+dot.classList.add("active");
+
+dot.animate(
+
+    [
+
+        {
+
+            transform:"scale(1)"
+
+        },
+
+        {
+
+            transform:"scale(1.5)"
+
+        },
+
+        {
+
+            transform:"scale(1)"
+
+        }
+
+    ],
+
+    {
+
+        duration:250
+
+    }
+
+);
+
+}
+
+Wedding.sparkle=function(){
+
+    const symbols=[
+        "✦",
+        "✧",
+        "✨"
+    ];
+
+    const rect=
+    this.drum.getBoundingClientRect();
+
+    for(let i=0;i<5;i++){
+
+        const s=
+        document.createElement("span");
+
+        s.className=
+        "wedding-sparkle";
+
+        s.textContent=
+
+        symbols[
+            Math.floor(
+                Math.random()*symbols.length
+            )
+        ];
+
+        s.style.left=
+
+        (rect.left+
+        rect.width/2-
+        Celebration.wrapper.getBoundingClientRect().left+
+        (Math.random()*50-25))
+        +"px";
+
+        s.style.top=
+
+        (rect.top+
+        rect.height/2-
+        Celebration.wrapper.getBoundingClientRect().top+
+        (Math.random()*50-25))
+        +"px";
+
+        s.style.setProperty(
+
+            "--x",
+
+            (Math.random()*80-40)+"px"
+
+        );
+
+        s.style.setProperty(
+
+            "--y",
+
+            (Math.random()*80-40)+"px"
+
+        );
+
+        Celebration.wrapper.appendChild(s);
+
+        setTimeout(()=>{
+
+            s.remove();
+
+        },500);
+
+    }
+
+}
+
+Wedding.complete=function(){
+
+    if(this.completed) return;
+
+    this.completed=true;
+
+    Celebration.state.wedding=true;
+
+    Celebration.skip.style.display="none";
+
+    this.reveal();
+
+}
+
+Wedding.reveal=function(){
+
+    document
+.getElementById("weddingOverlay")
+.animate(
+
+        [
+
+            {
+
+                opacity:1
+
+            },
+
+            {
+
+                opacity:0
+
+            }
+
+        ],
+
+        {
+
+            duration:350,
+
+            fill:"forwards"
+
+        }
+
+    );
+
+    setTimeout(()=>{
+
+        document
+.getElementById("weddingOverlay")
+.style.display="none";
+
+        Celebration.image.src=
+
+        Celebration.data.wedding.image;
+
+    },350);
+
+    Celebration.interaction.innerHTML="";
+
+    Celebration.instruction.style.display="none";
+
+    Celebration.hint.textContent=
+    "✦ Tap outside the invitation to continue ✦";
+
+    Celebration.hint.classList.add("show");
+
+    unlockWeddingCard();
+
+    Celebration.timer=setTimeout(()=>{
+
+    if(Celebration.modal.classList.contains("show")){
+
+        Celebration.hide();
+
+    }
+
+},5000);
+
+}
+
+function unlockWeddingCard(){
+
+    const card=document.querySelector(
+
+        '.event-card[data-event="wedding"]'
+
+    );
+
+    card.classList.remove("locked");
+
+    card.querySelector("img")
+        .style.filter="blur(0px)";
+
+    card.querySelector(".card-overlay")
+        .style.display="none";
+
+}
+
+Wedding.finalCelebration=function(){
+
+    this.animateFinalDrum();
+
+    this.bigSparkleBurst();
+
+    setTimeout(()=>{
+
+        this.complete();
+
+    },700);
+
+}
+
+Wedding.animateFinalDrum=function(){
+
+    this.drum.animate(
+
+        [
+
+            {
+
+                transform:"scale(1)"
+
+            },
+
+            {
+
+                transform:"scale(.90)"
+
+            },
+
+            {
+
+                transform:"scale(1.18)"
+
+            },
+
+            {
+
+                transform:"scale(1.05)"
+
+            },
+
+            {
+
+                transform:"scale(1)"
+
+            }
+
+        ],
+
+        {
+
+            duration:550,
+
+            easing:"cubic-bezier(.22,1,.36,1)"
+
+        }
+
+    );
+
+}
+
+Wedding.bigSparkleBurst=function(){
+
+    const symbols=[
+
+        "✦",
+
+        "✧",
+
+        "✨"
+
+    ];
+
+    const rect=
+    this.drum.getBoundingClientRect();
+
+    const wrapper=
+    Celebration.wrapper.getBoundingClientRect();
+
+    for(let i=0;i<25;i++){
+
+        const s=
+        document.createElement("span");
+
+        s.className=
+        "wedding-sparkle";
+
+        s.textContent=
+
+        symbols[
+            Math.floor(
+                Math.random()*symbols.length
+            )
+        ];
+
+        s.style.left=
+
+        (rect.left+
+        rect.width/2-
+        wrapper.left)+"px";
+
+        s.style.top=
+
+        (rect.top+
+        rect.height/2-
+        wrapper.top)+"px";
+
+        s.style.setProperty(
+
+            "--x",
+
+            (Math.random()*260-130)+"px"
+
+        );
+
+        s.style.setProperty(
+
+            "--y",
+
+            (Math.random()*220-110)+"px"
+
+        );
+
+        Celebration.wrapper.appendChild(s);
+
+        setTimeout(()=>{
+
+            s.remove();
+
+        },800);
+
+    }
+
+}
+
+/*====================================
+            LUNCH ENGINE
+====================================*/
+
+const Lunch={
+
+    stage:0,
+
+    completed:false,
+
+    overlay:null,
+
+    image:null,
+
+    hand:null,
+
+    dragging:false,
+
+    startX:0,
+
+    startLeft:-60,
+
+    maxLeft:120,
+
+    stages:[
+
+    "assets/images/lunch/water-stage-1.png",
+
+    "assets/images/lunch/water-stage-2.png",
+
+    "assets/images/lunch/water-stage-3.png",
+
+    "assets/images/lunch/banana-leaf-clean.png",
+
+    "assets/images/lunch/meal.png"
+
+]
+
+};
+
+Lunch.init=function(){
+
+    this.stage=0;
+
+    this.completed=false;
+
+    this.overlay = document.getElementById("lunchOverlay");
+
+    Celebration.canvas.style.display="none";
+
+    Celebration.skip.style.display="none";
+
+    Celebration.hint.classList.remove("show");
+
+    this.hideImage();
+
+    Celebration.image.style.pointerEvents = "none";
+
+    this.overlay.style.display = "block";
+
+    Celebration.instruction.textContent=
+
+    "Wipe the banana leaf";
+
+    Celebration.instruction.style.display="block";
+
+    this.image=
+
+    document.getElementById(
+
+        "lunchStage"
+
+    );
+
+    this.hand=
+
+    document.getElementById(
+
+        "wipeHand"
+
+    );
+
+    this.image.src=this.stages[0];
+
+    this.hand.style.left=this.startLeft+"px";
+
+    Celebration.skip.style.display = "block";
+
+Celebration.skip.onclick = () => {
+
+    Lunch.complete();
+
+};
+
+    this.bindEvents();
+
+}
+
+Lunch.hideImage=function(){
+
+    Celebration.image.style.opacity="0";
+
+    Celebration.image.style.pointerEvents="none";
+
+}
+
+Lunch.showImage=function(){
+
+    Celebration.image.style.opacity="1";
+
+    Celebration.image.style.pointerEvents="auto";
+
+}
+
+Lunch.bindEvents=function(){
+
+    this.hand.onpointerdown=(e)=>{
+
+        this.startDrag(e);
+
+    };
+
+    window.onpointermove=(e)=>{
+
+        this.drag(e);
+
+    };
+
+    window.onpointerup=()=>{
+
+        this.endDrag();
+
+    };
+
+}
+
+Lunch.startDrag=function(e){
+
+    this.dragging=true;
+
+    this.startX=e.clientX;
+
+    this.hand.style.cursor="grabbing";
+
+}
+
+Lunch.drag=function(e){
+
+    if(!this.dragging) return;
+
+    let distance=e.clientX-this.startX;
+
+    if(distance<0){
+
+        distance=0;
+
+    }
+
+    let left=this.startLeft+distance;
+
+    if(left>this.maxLeft){
+
+        left=this.maxLeft;
+
+    }
+
+    this.hand.style.left=left+"px";
+
+}
+
+Lunch.endDrag=function(){
+
+    if(!this.dragging) return;
+
+    this.dragging=false;
+
+    this.hand.style.cursor="grab";
+
+    const currentLeft=parseInt(
+        this.hand.style.left
+    );
+
+    if(currentLeft>=this.maxLeft){
+
+        this.nextStage();
+
+    }
+
+}
+
+Lunch.nextStage=function(){
+
+    this.stage++;
+
+    this.hand.style.transition="left .35s ease";
+
+    this.hand.style.left=this.startLeft+"px";
+
+    setTimeout(()=>{
+
+        this.image.style.opacity="0";
+
+        setTimeout(()=>{
+
+            this.image.src=this.stages[this.stage];
+
+            this.image.style.opacity="1";
+
+            // Clean leaf reached
+            if(this.stage===3){
+
+                this.hand.style.display="none";
+
+                setTimeout(()=>{
+
+                    this.showMeal();
+
+                },600);
+
+            }
+
+        },180);
+
+    },220);
+
+}
+
+Lunch.showMeal=function(){
+
+    this.image.style.opacity="0";
+
+    setTimeout(()=>{
+
+        this.image.src=this.stages[4];
+
+        this.image.style.opacity="1";
+
+        this.startSteam();
+
+    },300);
+
+}
+
+Lunch.startSteam=function(){
+
+    const container=
+    document.getElementById(
+        "steamContainer"
+    );
+
+    const positions=[
+
+        {x:170,y:320},
+
+        {x:215,y:305},
+
+        {x:260,y:325}
+
+    ];
+
+    positions.forEach(pos=>{
+
+        const steam=
+        document.createElement("div");
+
+        steam.className="steam";
+
+        steam.style.left=pos.x+"px";
+
+        steam.style.top=pos.y+"px";
+
+        container.appendChild(steam);
+
+        steam.addEventListener(
+
+            "animationend",
+
+            ()=>{
+
+                steam.remove();
+
+            }
+
+        );
+
+    });
+
+    setTimeout(()=>{
+
+        Lunch.complete();
+
+    },2200);
+
+}
+
+Lunch.complete=function(){
+
+    this.completed=true;
+
+    Celebration.skip.style.display = "none";
+
+    Celebration.state.lunch=true;
+
+    document.getElementById(
+        "lunchOverlay"
+    ).style.display="none";
+
+    Celebration.image.style.opacity="1";
+
+    Celebration.image.style.pointerEvents="auto";
+
+    Celebration.image.src=
+    Celebration.data.lunch.image;
+
+    Celebration.instruction.style.display="none";
+
+    Celebration.hint.textContent=
+    "✦ Tap outside the invitation to continue ✦";
+
+    Celebration.hint.classList.add("show");
+
+    unlockLunchCard();
+
+    showCompletedLunch();
+
+Celebration.timer = setTimeout(()=>{
+
+    if(Celebration.modal.classList.contains("show")){
+
+        Celebration.hide();
+
+    }
+
+},5000);
+
+}
+
+function unlockLunchCard(){
+
+    const card = document.querySelector(
+        '.event-card[data-event="lunch"]'
+    );
+
+    if(!card) return;
+
+    card.classList.remove("locked");
+
+    card.querySelector("img")
+        .style.filter = "blur(0px)";
+
+    card.querySelector(".card-overlay")
+        .style.display = "none";
+
+}
+
+function showCompletedLunch(){
+
+    Lunch.showImage();
+
+    Celebration.skip.style.display = "none";
+
+    Lunch.overlay.style.display="none";
+
+    Celebration.image.src=
+
+    Celebration.data.lunch.image;
+
+    Celebration.instruction.style.display="none";
+
+    Celebration.hint.textContent=
+
+    "✦ Tap outside the invitation to continue ✦";
+
+    Celebration.hint.classList.add("show");
+
 
 }
