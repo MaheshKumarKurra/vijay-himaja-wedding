@@ -53,6 +53,20 @@ const Controller = {
 
 );
 
+    this.closeBtn =
+
+    document.getElementById(
+
+        "celeV2Close"
+
+    );
+
+this.closeBtn.onclick = ()=>{
+
+    this.hide();
+
+};
+
 }
 
 };
@@ -146,6 +160,8 @@ document.addEventListener(
 Controller.open = function(eventName){
 
     this.current = eventName;
+
+    Lotus.moveTo(eventName);
 
     this.reset();
 

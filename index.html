@@ -359,7 +359,7 @@ Optimize crop and alignment after receiving edited images.
 
         <div class="celebration-list">
 
-            <div class="timeline-lotus">
+            <div class="timeline-lotus" id="timelineLotus">
 
     <img src="assets/images/lotus.png" alt="Timeline Ornament" class="timeline-lotus-img">
 
@@ -1059,6 +1059,15 @@ beautiful memories."
 
     <div class="cele-v2-dialog">
 
+        <button
+        id="celeV2Close"
+        class="cele-v2-close"
+        aria-label="Close">
+
+        &times;
+
+    </button>
+
         <div class="cele-v2-header">
 
             <h3 id="celeV2Title"></h3>
@@ -1227,6 +1236,7 @@ beautiful memories."
 </div>
 
 <script src="js/script.js"></script>
+
 <script src="celebrations/state.js"></script>
 <script src="celebrations/activity.js"></script>
 <script src="celebrations/controller.js"></script>

@@ -49,6 +49,78 @@
 
 }
 
+.cele-v2-close{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:35px;
+
+    height:35px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.92);
+
+    color:black;
+
+    font-size:30px;
+
+    line-height:42px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    box-shadow:
+
+        0 6px 18px rgba(0,0,0,.15);
+
+    transition:
+
+        transform .25s ease,
+
+        background .25s ease,
+
+        box-shadow .25s ease;
+
+    z-index:100;
+
+}
+
+.cele-v2-close:hover{
+
+    transform:scale(1.08);
+
+    background:#D4AF37;
+
+    color:white;
+
+    box-shadow:
+
+        0 8px 22px rgba(212,175,55,.35);
+
+}
+
+.cele-v2-close:hover{
+
+    transform:scale(1.08);
+
+    background:#D4AF37;
+
+    color:white;
+
+    box-shadow:
+
+        0 8px 22px rgba(212,175,55,.35);
+
+}
+
 .cele-v2-header{
 
     position:absolute;
@@ -259,27 +331,27 @@
 
 .timeline-lotus{
 
-    opacity:0;
-
     position:absolute;
+
+    left:30px;
 
     width:90px;
 
     height:90px;
 
-    left:30px;
+    opacity:0;
 
-    transform:translateX(-50%);
+    transform:
+        translate(-50%,-50%) scale(0);
+
+    pointer-events:none;
 
     z-index:30;
 
-    transition:top .7s cubic-bezier(.4,0,.2,1);
-
     transition:
-
-        top .6s ease,
-
-        opacity .4s ease;
+        top .7s cubic-bezier(.4,0,.2,1),
+        opacity .4s ease,
+        transform .35s ease;
 
 }
 
@@ -347,11 +419,12 @@
 
 }
 
-.timeline-dot.active{
+.timeline-dot.visited{
 
     background:#D4AF37;
 
-    transform:translate(-50%,-50%) scale(1.15);
+    transform:
+    translate(-50%,-50%) scale(1.15);
 
     box-shadow:
 
@@ -382,9 +455,9 @@
 
 .event-svg{
 
-    width:22px;
+    width:15px;
 
-    height:22px;
+    height:15px;
 
     flex-shrink:0;
 
@@ -469,7 +542,9 @@
 
 .card-column{
 
-    width:145px;
+    width:120px;
+
+    height: 200px;
 
     display:flex;
 
@@ -477,13 +552,15 @@
 
     align-items:center;
 
-    transform:translateY(15px);
+    transform:translateY(25px), 
 
 }
 
 .event-card{
 
     width:100%;
+
+    height: 100%;
 
     border-radius:22px;
 
@@ -500,6 +577,8 @@
 .event-card img{
 
     width:100%;
+
+    height: 100%;
 
     display:block;
 
@@ -1436,7 +1515,7 @@ button:focus-visible{
 
     position:absolute;
 
-    top:70px;
+    top:18px;
 
     left:16px;
 
