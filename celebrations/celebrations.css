@@ -1560,3 +1560,279 @@ button:focus-visible{
     object-fit:cover;
 
 }
+
+
+/*====================================
+            WEDDING
+====================================*/
+
+.wedding-container{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+}
+
+.wedding-activity-image{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+#weddingDrum{
+
+    position:absolute;
+
+    width:80%;
+
+    left:50%;
+
+    top:58%;
+
+    transform:translate(-50%,-50%) scale(1);
+
+    transform-origin:center;
+
+    cursor:pointer;
+
+    transition:
+        transform .12s ease,
+        filter .12s ease;
+
+    z-index:5;
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+    touch-action:manipulation;
+
+}
+
+#weddingCard{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:opacity .5s ease;
+
+}
+
+#weddingCard.show{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
+
+.wedding-progress{
+
+    position:absolute;
+
+    left:50%;
+
+    top:78%;      /* Move this up/down to fine tune */
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:10px;
+
+    z-index:8;
+
+}
+
+.wedding-progress .dot{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:#d5d5d5;
+
+    transition:.3s ease;
+
+}
+
+.wedding-progress .dot.active{
+
+    background:#d4af37;
+
+    box-shadow:0 0 8px rgba(212,175,55,.7);
+
+}
+
+#drumRipple{
+
+    position:absolute;
+
+    left:50%;
+
+    top:58%;
+
+    width:80px;
+
+    height:80px;
+
+    transform:translate(-50%,-50%) scale(0);
+
+    border:3px solid rgba(255,215,0,.8);
+
+    border-radius:50%;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:4;
+
+}
+
+#drumRipple.show{
+
+    animation:drumRipple .45s ease-out;
+
+}
+
+@keyframes drumRipple{
+
+    0%{
+
+        transform:translate(-50%,-50%) scale(.2);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:translate(-50%,-50%) scale(2);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/*====================================
+            LUNCH
+====================================*/
+
+.lunch-container{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+}
+
+.lunch-activity-image{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:opacity .6s ease;
+
+}
+
+.lunch-hand{
+
+    position:absolute;
+
+    width:325px;
+
+    left:18%;
+
+    top:80%;
+
+    transform:translate(-50%,-50%);
+
+    cursor:grab;
+
+    touch-action:none;
+
+    z-index:5;
+
+    transition:
+        transform .2s ease,
+        opacity .4s ease;
+
+}
+
+.lunch-hand:active{
+
+    cursor:grabbing;
+
+}
+
+.lunch-card{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    opacity:0;
+
+    transform:scale(.94);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+
+}
+
+.lunch-card.show{
+
+    opacity:1;
+
+    transform:scale(1);
+
+}
+
+#lunchRevealBtn{
+
+    z-index:10;
+
+}
