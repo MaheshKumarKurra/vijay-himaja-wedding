@@ -3647,7 +3647,7 @@ box-shadow:
   CELEBRATION
 ====================================*/
 
-.celebration-section{
+/*.celebration-section{
 
     padding:40px 0;
 
@@ -4031,13 +4031,13 @@ box-shadow:
 
     }
 
-}
+}*/
 
 /*====================================
   CELEBRATION MODAL
 ====================================*/
 
-.celebration-modal{
+/*.celebration-modal{
 
     position:fixed;
 
@@ -4097,19 +4097,12 @@ box-shadow:
 .celebration-image{
 
     width:100%;
-
     display:block;
-
     position:relative;
-
     z-index:1;
-
     border-radius:24px;
-
     transition:opacity .25s ease;
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.45);
+    box-shadow:0 25px 70px rgba(0,0,0,.45);
 
 }
 
@@ -4194,15 +4187,10 @@ box-shadow:
     position:relative;
     overflow:hidden;
     border-radius:24px;
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.45);
-
+    box-shadow:0 25px 70px rgba(0,0,0,.45);
     width:min(96%,480px);
-
-    margin:28px auto ;
+    margin:28px auto;
     align-self:center;
-
     transition:transform .4s ease;
 
 }
@@ -4628,14 +4616,14 @@ box-shadow:
 
     }
 
-}
+}*/
 
 
 /*======================================
               LUNCH
 ======================================*/
 
-.lunch-overlay{
+/*.lunch-overlay{
 
     position:absolute;
 
@@ -4765,13 +4753,13 @@ box-shadow:
 
     }
 
-}
+}*/
 
 /*======================================
         REMOVE FOCUS OUTLINES
 ======================================*/
 
-*:focus{
+/**:focus{
     outline:none;
 }
 
@@ -4810,4 +4798,41 @@ button:focus-visible{
     -webkit-user-select:none;
     -webkit-user-drag:none;
     -webkit-tap-highlight-color:transparent;
+}*/
+
+
+/*====================================
+        FINAL CARDS
+====================================*/
+
+/*.final-card{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:opacity .45s ease;
+
 }
+
+.final-card.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+
+}*/

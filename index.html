@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/luxury.css">
 
+<link rel="stylesheet" href="celebrations/celebrations.css">
+
     <link rel="icon" href="assets/icons/favicon.png">
 
     <link rel="icon" type="image/png" href="assets/icons/favicon.png">
@@ -348,7 +350,7 @@ Optimize crop and alignment after receiving edited images.
 
     <div class="container">
 
-        <h2 class="section-title">Our Celebration</h2>
+        <h2 class="section-title">Wedding Celebrations</h2>
 
         <p class="celebration-subtitle">
             Every ceremony has a story.<br>
@@ -949,7 +951,7 @@ beautiful memories."
     CELEBRATION MODAL
 =====================================-->
 
-<div id="celebrationModal" class="celebration-modal">
+<!--<div id="celebrationModal" class="celebration-modal">
 
 
     <div class="celebration-dialog">
@@ -968,13 +970,23 @@ beautiful memories."
 
         ▶ Reveal
 
-    </button>
+    </button>-->
 
-    <img
-        id="celebrationModalImage"
-        class="celebration-image"
-        src=""
-        alt="">
+    <!-- Final Invitation Card -->
+
+<!--<img
+    id="celebrationModalImage"
+    class="celebration-image"
+    src=""
+    alt="">-->
+
+<!-- Permanent Haldi Card -->
+
+<!--<img
+    id="haldiFinalCard"
+    class="celebration-image final-card"
+    src="assets/images/haldi-card.png"
+    alt="">
 
     <canvas id="haldiCanvas"></canvas>
 
@@ -1037,9 +1049,118 @@ beautiful memories."
 
     </div>
 
+</div>-->
+
+<!--====================================
+        CELEBRATION V2 MODAL
+=====================================-->
+
+<div id="celeV2Modal" class="cele-v2-modal">
+
+    <div class="cele-v2-dialog">
+
+        <div class="cele-v2-header">
+
+            <h3 id="celeV2Title"></h3>
+
+        </div>
+
+        <div id="celeV2Body" class="cele-v2-body">
+
+            <section id="haldiActivity" class="cele-activity">
+
+    <div class="haldi-container">
+
+        <img
+            id="haldiCard"
+            class="haldi-card"
+            src="assets/images/haldi-card.png"
+            alt="Haldi Invitation">
+
+        <canvas
+            id="haldiScratchCanvas">
+        </canvas>
+
+        <button
+            id="haldiRevealBtn"
+            class="haldi-reveal-btn">
+
+            ▶ Reveal
+
+        </button>
+
+    </div>
+
+</section>
+
+<section id="mehendiActivity"
+         class="cele-activity">
+
+    <div class="mehendi-container">
+
+        <img
+            id="mehendiCard"
+            class="mehendi-card"
+            src="assets/images/mehendi/mehendi-0.png"
+            alt="Mehendi">
+
+        <canvas
+            id="mehendiCanvas">
+        </canvas>
+
+        <button
+            id="mehendiRevealBtn"
+            class="haldi-reveal-btn">
+
+            ▶ Reveal
+
+        </button>
+
+    </div>
+
+    <div id="mehendiFinalCard"
+     class="mehendi-final-card">
+
+    <img
+        src="assets/images/mehendi-card.png"
+        alt="Mehendi Invitation">
+
+</div>
+
+</section>
+
+<section id="weddingActivity"
+         class="cele-activity">
+</section>
+
+<section id="lunchActivity"
+         class="cele-activity">
+</section>
+
+        </div>
+
+        <p id="celeV2Instruction"></p>
+
+        <div
+            id="celeV2Hint">
+
+            ✦ Tap outside the invitation to continue ✦
+
+        </div>
+
+    </div>
+
 </div>
 
 <script src="js/script.js"></script>
+<script src="celebrations/state.js"></script>
+<script src="celebrations/activity.js"></script>
+<script src="celebrations/controller.js"></script>
+<script src="celebrations/timeline.js"></script>
+<script src="celebrations/haldi.js"></script>
+<script src="celebrations/mehendi.js"></script>
+<script src="celebrations/wedding.js"></script>
+<script src="celebrations/lunch.js"></script>
 
 <audio id="landingMusic" loop preload="auto">
     <source src="assets/music/landing.mp3" type="audio/mpeg">

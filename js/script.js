@@ -510,10 +510,61 @@ window.addEventListener("resize", () => {
     }
 });
 
+/*====================================
+        ASSET PRELOADER
+====================================*/
+
+/*const PRELOAD_IMAGES = [
+
+    // Haldi
+    "assets/images/haldi-card.png",
+    "assets/images/haldi-overlay.png",
+
+    // Mehendi
+    "assets/images/mehendi-card.png",
+    "assets/images/mehendi/mehendi-0.png",
+    "assets/images/mehendi/mehendi-top.png",
+    "assets/images/mehendi/mehendi-left.png",
+    "assets/images/mehendi/mehendi-right.png",
+    "assets/images/mehendi/mehendi-top-left.png",
+    "assets/images/mehendi/mehendi-top-right.png",
+    "assets/images/mehendi/mehendi-left-right.png",
+    "assets/images/mehendi/mehendi-complete.png",
+
+    // Wedding
+    "assets/images/wedding-card.png",
+    "assets/images/wedding-activity.png",
+    "assets/images/drum.png",
+
+    // Lunch
+    "assets/images/lunch-card.png",
+    "assets/images/lunch/water-stage-1.png",
+    "assets/images/lunch/water-stage-2.png",
+    "assets/images/lunch/water-stage-3.png",
+    "assets/images/lunch/banana-leaf-clean.png",
+    "assets/images/lunch/meal.png"
+
+];
+
+function preloadAssets(){
+
+    PRELOAD_IMAGES.forEach(src=>{
+
+        const img = new Image();
+
+        img.src = src;
+
+    });
+
+}
+
+window.addEventListener("load", preloadAssets);
+
 /*==================================== 
 CELEBRATION CONTROLLER V2 
 ====================================*/ 
-const Celebration = { 
+
+/*const Celebration = { 
     modal: document.getElementById("celebrationModal"),
     dialog: document.querySelector(".celebration-dialog"), 
     title: document.getElementById("celebrationTitle"), 
@@ -532,7 +583,9 @@ const Celebration = {
         wedding:false, 
         lunch:false 
     } 
-}; 
+};
+
+Celebration.haldiCard = document.getElementById("haldiFinalCard");
 
 Celebration.data = { 
     haldi:{ 
@@ -559,6 +612,8 @@ Celebration.data = {
 
 Celebration.reset=function(){ 
     clearTimeout(this.timer); 
+    Celebration.haldiCard.classList.remove("show");
+    Celebration.haldiCard.style.pointerEvents="none";
     this.instruction.style.display="block"; 
     this.instruction.style.opacity="1"; 
     this.instruction.style.visibility="visible"; 
@@ -604,8 +659,6 @@ Celebration.open=function(eventName){
             showCompletedHaldi(); 
         } 
         else{ 
-            Celebration.image.src = Celebration.data.haldi.image; 
-            Celebration.image.style.opacity = "1"; 
             Haldi.init(); 
         } 
         break; 
@@ -696,13 +749,13 @@ document.querySelectorAll(".event-card").forEach(card=>{
             card.dataset.event 
         ); 
     }); 
-}); 
+});*/ 
     
 /*==================================== 
         HALDI ENGINE 
 ====================================*/ 
 
-const Haldi={ 
+/*const Haldi={ 
     scratching:false, 
     revealed:false, 
     ctx:null, 
@@ -875,9 +928,8 @@ Haldi.complete=function(){
         createHaldiBurst(); 
         unlockHaldiCard(); 
         moveTimeline(0); 
-        Celebration.image.src = Celebration.data.haldi.image; 
-        Celebration.image.style.opacity = "1"; 
-        Celebration.image.style.pointerEvents = "auto"; 
+        Celebration.haldiCard.classList.add("show");
+        Celebration.haldiCard.style.pointerEvents="auto";
         Celebration.timer = setTimeout(()=>{ 
             if( Celebration.modal.classList .contains("show") ){
                 Celebration.hide(); 
@@ -900,13 +952,13 @@ function unlockMehendiCard(){
     card.classList.remove("locked"); 
     card.querySelector("img").style.filter = "blur(0px)"; 
     card.querySelector(".card-overlay") .style.display = "none"; 
-}
+}*/
 
 /*==================================== 
         HALDI PARTICLE BURST 
 ====================================*/ 
 
-function createHaldiBurst(){ 
+/*function createHaldiBurst(){ 
     for(let i=0;i<18;i++){ 
         const particle = document.createElement("span"); 
         particle.className = "haldi-particle"; 
@@ -927,21 +979,20 @@ function createHaldiBurst(){
 }
 
 function showCompletedHaldi(){ 
-    Celebration.image.src = Celebration.data.haldi.image; 
-    Celebration.image.style.opacity = "1"; 
-    Celebration.image.style.pointerEvents = "auto"; 
+    Celebration.haldiCard.classList.add("show");
+    Celebration.haldiCard.style.pointerEvents="auto"; 
     Celebration.canvas.style.display="none"; 
     Celebration.skip.style.display="none"; 
     Celebration.wrapper.style.transform= "translateY(-10px) scale(1.03)"; 
     Celebration.instruction.style.display="none"; 
     Celebration.hint.classList.add("show"); 
-}
+}*/
 
 /*====================================
         MEHENDI ENGINE
 ====================================*/
 
-const Mehendi={
+/*const Mehendi={
     completed:false,
     tracing:false,
     currentImage:0,
@@ -1002,23 +1053,23 @@ Mehendi.getPoint=function(e){
 
 Mehendi.detectPetal=function(x,y){
     const w = Celebration.image.clientWidth;
-    const h = Celebration.image.clientHeight;
+    const h = Celebration.image.clientHeight;*/
 
     /* TOP */
 
-    if( x>w*0.38 && x<w*0.62 && y>h*0.10 && y<h*0.55 ){
+    /*if( x>w*0.38 && x<w*0.62 && y>h*0.10 && y<h*0.55 ){
         return "top";
-    }
+    }*/
 
     /* LEFT */
 
-    if( x>w*0.05 && x<w*0.42 && y>h*0.40 && y<h*0.90 ){
+    /*if( x>w*0.05 && x<w*0.42 && y>h*0.40 && y<h*0.90 ){
         return "left";
-    }
+    }*/
 
     /* RIGHT */
 
-    if( x>w*0.58 && x<w*0.95 && y>h*0.40 && y<h*0.90 ){
+    /*if( x>w*0.58 && x<w*0.95 && y>h*0.40 && y<h*0.90 ){
         return "right";
     }
     return null;
@@ -1148,24 +1199,24 @@ Mehendi.bloom=function(){
 
 Mehendi.reveal=function(){
 
-    /* Show invitation */
+    // Show invitation 
 
     Celebration.image.src = Celebration.data.mehendi.image;
     Celebration.image.style.opacity="1";
     Celebration.image.style.pointerEvents = "auto";
 
-    /* Hide tracing canvas */
+    // Hide tracing canvas 
 
     Celebration.canvas.style.opacity="0";
     Celebration.canvas.style.pointerEvents="none";
     Celebration.canvas.style.display="none";
 
-    /* Hide instruction */
+    // Hide instruction 
 
     Celebration.instruction.textContent="";
     Celebration.instruction.style.display="none";
 
-    /* Update hint */
+    // Update hint 
 
     Celebration.hint.textContent = "✦ Tap outside the invitation to continue ✦";
     Celebration.hint.classList.add("show");
@@ -1176,13 +1227,13 @@ Mehendi.reveal=function(){
             Celebration.hide();
         }
     },5000);
-}
+}*/
 
 /*====================================
         WEDDING ENGINE
 ====================================*/
 
-const Wedding={
+/*const Wedding={
     taps:0,
     completed:false,
     drum:null,
@@ -1362,13 +1413,13 @@ Wedding.bigSparkleBurst=function(){
             s.remove();
         },800);
     }
-}
+}*/
 
 /*====================================
             LUNCH ENGINE
 ====================================*/
 
-const Lunch={
+/*const Lunch={
     stage:0,
     completed:false,
     overlay:null,
@@ -1551,4 +1602,4 @@ function showCompletedLunch(){
     Celebration.instruction.style.display="none";
     Celebration.hint.textContent="✦ Tap outside the invitation to continue ✦";
     Celebration.hint.classList.add("show");
-}
+}*/
