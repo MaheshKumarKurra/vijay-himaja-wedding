@@ -3453,23 +3453,14 @@ body.menu-open{
 
 .overlay-date-image{
 
-    width:100%;
-
     display:block;
 
-}
-
-#overlayScratchCanvas{
-
-    position:absolute;
-
-    inset:0;
-
     width:100%;
 
-    height:100%;
+    height:auto;
 
 }
+
 
 .continue-hint{
 
@@ -3515,6 +3506,10 @@ body.menu-open{
 .scratch-wrapper{
 
     position:relative;
+
+    width:100%;
+
+    display:block;
 
 }
 

@@ -270,8 +270,22 @@ let revealed = false;
 const scratchCanvas = document.getElementById("overlayScratchCanvas");
 const wrapper = document.querySelector(".scratch-wrapper");
 const overlay = document.getElementById("dateOverlay");
-scratchCanvas.width = wrapper.offsetWidth;
-scratchCanvas.height = wrapper.offsetHeight;
+
+const modal = document.querySelector(".date-modal");
+
+modal.addEventListener("transitionend", (e) => {
+
+    if(
+        e.propertyName === "transform" &&
+        overlay.classList.contains("show")
+    ){
+
+        resizeCanvas();
+
+    }
+
+});
+
 if (scratchCanvas) {
     const ctx = scratchCanvas.getContext("2d", {
         willReadFrequently: true
@@ -279,32 +293,67 @@ if (scratchCanvas) {
     const foil = new Image();
     foil.src = "assets/images/gold-foil.png";
     let scratching = false;
-    function resizeCanvas() {
-        scratchCanvas.width = scratchCanvas.offsetWidth;
-        scratchCanvas.height = scratchCanvas.offsetHeight;
-        drawFoil();
-    }
+    function resizeCanvas(){
+
+    const dpr = window.devicePixelRatio || 1;
+
+    const rect = wrapper.getBoundingClientRect();
+
+    scratchCanvas.width  = rect.width * dpr;
+    scratchCanvas.height = rect.height * dpr;
+
+    scratchCanvas.style.width  = rect.width + "px";
+    scratchCanvas.style.height = rect.height + "px";
+
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.scale(dpr,dpr);
+
+    drawFoil();
+
+    console.log("Wrapper:", wrapper.offsetWidth, wrapper.offsetHeight);
+
+console.log(
+    "Canvas CSS:",
+    scratchCanvas.offsetWidth,
+    scratchCanvas.offsetHeight
+);
+
+console.log(
+    "Canvas Internal:",
+    scratchCanvas.width,
+    scratchCanvas.height
+);
+
+console.log(
+    "Image:",
+    document.querySelector(".overlay-date-image").offsetWidth,
+    document.querySelector(".overlay-date-image").offsetHeight
+);
+
+}
+
     function drawFoil() {
         if (!foil.complete) return;
         ctx.globalCompositeOperation = "source-over";
-        ctx.clearRect(
-            0,
-            0,
-            scratchCanvas.width,
-            scratchCanvas.height
-        );
-        ctx.drawImage(
-            foil,
-            0,
-            0,
-            scratchCanvas.width,
-            scratchCanvas.height
-        );
+        const rect = wrapper.getBoundingClientRect();
+
+ctx.clearRect(
+    0,
+    0,
+    rect.width,
+    rect.height
+);
+
+ctx.drawImage(
+    foil,
+    0,
+    0,
+    rect.width,
+    rect.height
+);
         ctx.globalCompositeOperation = "destination-out";
     }
-    foil.onload = () => {
-    resizeCanvas();
-    };
+    foil.onload = () => {};
 
     window.addEventListener("resize", resizeCanvas);
     function scratch(x, y) {
@@ -392,7 +441,7 @@ if (scratchCanvas) {
                 transparent++;
             }
         }
-        const totalPixels = scratchCanvas.width * scratchCanvas.height;
+        const totalPixels = pixels.length / 4;
         const percent = (transparent / totalPixels) * 100;
         if (percent>=25) {
             revealed = true;
@@ -429,6 +478,16 @@ websiteContainer.addEventListener("scroll", () => {
         modalOpened = true;
         websiteContainer.style.overflowY = "hidden";
         overlay.classList.add("show");
+
+requestAnimationFrame(() => {
+
+    requestAnimationFrame(() => {
+
+        resizeCanvas();
+
+    });
+
+});
     }
 });
 
@@ -462,9 +521,6 @@ function positionTimeline(){
     const LOTUS_OFFSET = 55;
     timeline.style.top = `${firstCenter - LOTUS_OFFSET}px`;
     line.style.height = `${lastCenter - firstCenter}px`;
-    if(!flowerStarted){
-        lotus.style.top= `${-LOTUS_OFFSET}px`;
-    }
 
     rows.forEach((row, index) => {
         const center = row.offsetTop + row.offsetHeight / 2;
@@ -476,38 +532,21 @@ function positionTimeline(){
   TIMELINE SCROLL ANIMATION
 ====================================*/
 
-function moveTimeline(index){
-    currentTimelineIndex = index;
-    const timeline=document.querySelector(".timeline");
-    const lotus=document.querySelector(".timeline-lotus");
-    const dots=[
-        document.getElementById("dot-haldi"),
-        document.getElementById("dot-mehendi"),
-        document.getElementById("dot-wedding"),
-        document.getElementById("dot-lunch")
-    ];
-
-    const LOTUS_OFFSET=55;
-    if(!flowerStarted){
-        lotus.style.opacity="1";
-        flowerStarted=true;
-    }
-    lotus.style.top= `${timeline.offsetTop+dots[index].offsetTop-LOTUS_OFFSET}px`;
-    dots[index].classList.add("active");
-}
-
-let flowerStarted = false;
-let currentTimelineIndex = -1;
 positionTimeline();
 window.addEventListener("load", () => {
     positionTimeline();
 });
 
 window.addEventListener("resize", () => {
+
     positionTimeline();
-    if(currentTimelineIndex >= 0){
-        moveTimeline(currentTimelineIndex);
+
+    if(Lotus.current){
+
+        Lotus.moveTo(Lotus.current);
+
     }
+
 });
 
 /*====================================

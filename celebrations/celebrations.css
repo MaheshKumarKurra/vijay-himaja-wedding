@@ -65,15 +65,17 @@
 
     border-radius:50%;
 
-    background:rgba(255,255,255,.92);
+    background:rgba(0,0,0,.30);
 
-    color:black;
+    color:white;
 
-    font-size:30px;
+    font-size:35px;
 
-    line-height:42px;
+    line-height:1;
 
     text-align:center;
+
+    justify-items: center;
 
     cursor:pointer;
 
@@ -107,17 +109,9 @@
 
 }
 
-.cele-v2-close:hover{
+.cele-v2-close:active{
 
-    transform:scale(1.08);
-
-    background:#D4AF37;
-
-    color:white;
-
-    box-shadow:
-
-        0 8px 22px rgba(212,175,55,.35);
+    transform:scale(.94);
 
 }
 
@@ -541,6 +535,8 @@
 }
 
 .card-column{
+
+    margin-top: 40px;
 
     width:120px;
 
