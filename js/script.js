@@ -297,59 +297,41 @@ if (scratchCanvas) {
 
     const dpr = window.devicePixelRatio || 1;
 
-    const rect = wrapper.getBoundingClientRect();
+    const width  = wrapper.offsetWidth;
+    const height = wrapper.offsetHeight;
 
-    scratchCanvas.width  = rect.width * dpr;
-    scratchCanvas.height = rect.height * dpr;
+    scratchCanvas.width  = width * dpr;
+    scratchCanvas.height = height * dpr;
 
-    scratchCanvas.style.width  = rect.width + "px";
-    scratchCanvas.style.height = rect.height + "px";
+    scratchCanvas.style.width  = width + "px";
+    scratchCanvas.style.height = height + "px";
 
     ctx.setTransform(1,0,0,1,0,0);
     ctx.scale(dpr,dpr);
 
     drawFoil();
 
-    console.log("Wrapper:", wrapper.offsetWidth, wrapper.offsetHeight);
-
-console.log(
-    "Canvas CSS:",
-    scratchCanvas.offsetWidth,
-    scratchCanvas.offsetHeight
-);
-
-console.log(
-    "Canvas Internal:",
-    scratchCanvas.width,
-    scratchCanvas.height
-);
-
-console.log(
-    "Image:",
-    document.querySelector(".overlay-date-image").offsetWidth,
-    document.querySelector(".overlay-date-image").offsetHeight
-);
-
 }
 
     function drawFoil() {
         if (!foil.complete) return;
         ctx.globalCompositeOperation = "source-over";
-        const rect = wrapper.getBoundingClientRect();
+        const width  = wrapper.offsetWidth;
+        const height = wrapper.offsetHeight;
 
 ctx.clearRect(
     0,
     0,
-    rect.width,
-    rect.height
+    width,
+    height
 );
 
 ctx.drawImage(
     foil,
     0,
     0,
-    rect.width,
-    rect.height
+    width,
+    height
 );
         ctx.globalCompositeOperation = "destination-out";
     }
@@ -474,20 +456,10 @@ websiteContainer.addEventListener("scroll", () => {
         websiteContainer.scrollTop >= triggerPoint &&
         !modalOpened
     ){
-        console.log("OPENING MODAL");
         modalOpened = true;
         websiteContainer.style.overflowY = "hidden";
         overlay.classList.add("show");
-
-requestAnimationFrame(() => {
-
-    requestAnimationFrame(() => {
-
         resizeCanvas();
-
-    });
-
-});
     }
 });
 
