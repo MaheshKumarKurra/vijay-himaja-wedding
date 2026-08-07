@@ -45,6 +45,13 @@ Haldi.init = function(){
             }
         );
 
+    // Preload the overlay texture once, up front,
+    // so it's already cached by the time start() runs.
+    this.texture = new Image();
+
+    this.texture.src =
+        "assets/images/haldi-overlay.png";
+
     this.button.onclick = ()=>{
 
     this.reveal();
@@ -55,25 +62,22 @@ Haldi.init = function(){
 
 Haldi.start = function(){
 
-    this.canvas.style.display = "block";
-
-    this.canvas.style.opacity = "1";
-
-    this.button.style.display = "block";
-
     this.revealed = false;
 
     this.scratching = false;
 
     this.scratchCount = 0;
 
+    // Keep the canvas invisible/non-interactive until the
+    // overlay texture has actually been painted onto it —
+    // otherwise the card underneath flashes through first.
     this.canvas.style.display = "block";
 
-    this.canvas.style.opacity = "1";
+    this.canvas.style.opacity = "0";
 
-    this.canvas.style.pointerEvents = "auto";
+    this.canvas.style.pointerEvents = "none";
 
-    this.button.style.display = "block";
+    this.button.style.display = "none";
 
     this.resizeCanvas();
 
@@ -95,12 +99,7 @@ Haldi.resizeCanvas = function(){
 
 Haldi.loadOverlay = function(){
 
-    this.texture = new Image();
-
-    this.texture.src =
-        "assets/images/haldi-overlay.png";
-
-    this.texture.onload = ()=>{
+    const paintOverlay = ()=>{
 
         this.ctx.clearRect(
             0,
@@ -120,7 +119,28 @@ Haldi.loadOverlay = function(){
             this.canvas.height
         );
 
+        // Only now reveal the canvas — the overlay is
+        // already painted, so there's nothing to flash.
+        this.canvas.style.opacity = "1";
+
+        this.canvas.style.pointerEvents = "auto";
+
+        this.button.style.display = "block";
+
     };
+
+    // If the (preloaded) texture is already cached, this
+    // paints synchronously with no visible delay at all.
+    if(this.texture.complete && this.texture.naturalWidth !== 0){
+
+        paintOverlay();
+
+    }
+    else{
+
+        this.texture.onload = paintOverlay;
+
+    }
 
 }
 
