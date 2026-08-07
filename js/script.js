@@ -335,9 +335,13 @@ ctx.drawImage(
 );
         ctx.globalCompositeOperation = "destination-out";
     }
-    foil.onload = () => {};
+    foil.onload = () => {
+        if (scratchCanvas.width) drawFoil();
+    };
 
     window.addEventListener("resize", resizeCanvas);
+
+    resizeCanvas(); // pre-size & pre-paint immediately, before the overlay ever opens
     function scratch(x, y) {
         ctx.beginPath();
         ctx.arc(
